@@ -1,4 +1,4 @@
-import { Service } from './service';
+import { Service, ServiceConstructor } from './service';
 
 export class ServiceContainer {
   private static services = new ServiceContainer();
@@ -7,12 +7,8 @@ export class ServiceContainer {
   constructor() {
   }
 
-  add(service: FunctionConstructor | Service) {
-    if (service instanceof Service && service.name) {
-      this.list.set(service.name, service);
-    } else {
-      this.list.set(service.constructor.name, new (service as any)());
-    }
+  add(service: Service) {
+    this.list.set(service.name, service);
   }
 
   get(service: FunctionConstructor | string) {

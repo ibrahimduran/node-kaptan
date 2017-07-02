@@ -5,23 +5,25 @@ import { Logger } from '../util';
 
 export class Service extends EventEmitter {
   private kaptan: Kaptan;
-  public readonly name?: string;
   private logger: Logger;
 
-  constructor(name?: string) {
+  public readonly name?: string;
+
+  constructor(kaptan: Kaptan, ...services: Service[]) {
     super();
 
-    this.name = name;
-  }
-
-  public init(kaptan: Kaptan) {
     this.kaptan = kaptan;
+    this.name = name;
     this.logger = this.kaptan.logger.namespace(this.name || this.constructor.name);
 
-    this.logger.text('initialized');
+    this.logger.text('created')
   }
 
   public start() {
     this.logger.text('started');
   }
+}
+
+export interface ServiceConstructor {
+  new (kaptan: Kaptan, ...services: Service[]): Service;
 }

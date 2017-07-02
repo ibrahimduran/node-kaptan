@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 
 import { Logger } from './util';
-import { Service, ServiceContainer } from './service';
+import { Service, ServiceConstructor, ServiceContainer } from './service';
 
 export class Kaptan extends EventEmitter {
   public readonly services = new ServiceContainer();
@@ -11,12 +11,15 @@ export class Kaptan extends EventEmitter {
     super();
   }
 
-  public use(service: FunctionConstructor | Service) {
-    this.services.add(service);
+  public use(service: ServiceConstructor | Service) {
+    if (service instanceof Service) {
+      this.services.add(service);
+    } else {
+      this.services.add(new service(this));
+    }
   }
 
   public start() {
-    this.services.each(service => service.init(this));
     this.services.each(service => service.start());
 
     this.logger.text('started');
