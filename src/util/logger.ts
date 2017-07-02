@@ -21,7 +21,7 @@ export class Logger {
 
   constructor(label: string, nsp?: Logger) {
     this.label = label;
-    this.color = Logger.colors.splice(Math.floor(Math.random() * Logger.colors.length))[0];
+    this.color = Logger.colors.splice(Math.floor(Math.random() * Logger.colors.length), 1)[0];
     this.nsp = nsp;
   }
 
