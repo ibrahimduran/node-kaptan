@@ -9,13 +9,20 @@
     "watch": "tsc --watch"
   },
   "nyc": {
-    "extension": [".ts"],
-    "include": ["build/**/*.js"],
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "build/**/*.js"
+    ],
     "require": [
       "ts-node/register",
       "source-map-support/register"
     ],
-    "reporter": ["text-summary", "lcov"]
+    "reporter": [
+      "text-summary",
+      "lcov"
+    ]
   },
   "repository": {
     "type": "git",
