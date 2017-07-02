@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+npm_debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing & Coverage
+.nyc_output
+coverage/
+lib-cov/
+
+# Build & Cache
+build/
+.npm/
