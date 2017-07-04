@@ -4,8 +4,8 @@ import { Logger } from '../util';
 
 export class ServiceContainer {
   public readonly kaptan: Kaptan;
-  private list: Map<string, ServiceConstructor> = new Map<string, ServiceConstructor>();
-  private instances: Map<string, Service> = new Map<string, Service>();
+  public readonly instances: Map<string, Service> = new Map<string, Service>();
+  public readonly list: Map<string, ServiceConstructor> = new Map<string, ServiceConstructor>();
   public readonly logger: Logger;
 
   constructor(kaptan: Kaptan) {
@@ -25,7 +25,28 @@ export class ServiceContainer {
     return this.list.forEach(callback);
   }
 
-  public spawn() {
-    this.each((service, name) => this.instances.set(name, Service.spawn(service, this)));
+  public spawn(service?: ServiceConstructor | string): Service | void {
+    if (service) {
+      const serviceName = Service.getServiceName(service);
+      if (this.instances.has(serviceName)) {
+        return this.instances.get(serviceName);
+      } else {
+        const constructor = this.list.get(serviceName);
+        if (!constructor) {
+          throw new Error('Service not found! ' + serviceName);
+        }
+
+        const instance = Service.spawn(constructor, this);
+        this.instances.set(serviceName, instance);
+
+        return instance;
+      }
+    } else {
+      this.each((service, name) => {
+        if (!this.instances.has(name)) {
+          this.instances.set(name, Service.spawn(service, this));
+        }
+      });
+    }
   }
 }

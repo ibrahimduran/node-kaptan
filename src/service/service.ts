@@ -8,7 +8,7 @@ export class Service extends EventEmitter {
   private kaptan: Kaptan;
   private logger: Logger;
 
-  constructor(kaptan: Kaptan, ...services: Service[]) {
+  constructor(kaptan: Kaptan) {
     super();
 
     this.kaptan = kaptan;
@@ -37,7 +37,6 @@ export class Service extends EventEmitter {
   }
 
   public static spawn(service: ServiceConstructor, container: ServiceContainer) {
-    // TODO : inject dependencies
     container.logger.text('spawning ' + Service.getServiceName(service));
 
     return new service(container.kaptan);
@@ -55,7 +54,7 @@ export class Service extends EventEmitter {
 }
 
 export interface ServiceConstructor {
-  new (kaptan: Kaptan, ...services: Service[]): Service;
+  new (kaptan: Kaptan): Service;
 }
 
 export interface IService {
