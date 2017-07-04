@@ -3,6 +3,7 @@ import { EventEmitter } from 'events';
 import { ServiceContainer } from '../service';
 import { Kaptan } from '../kaptan';
 import { Logger } from '../util';
+import { toHyphenSpace } from '../util/texts';
 
 export class Service extends EventEmitter {
   private kaptan: Kaptan;
@@ -13,11 +14,7 @@ export class Service extends EventEmitter {
 
     this.kaptan = kaptan;
     this.logger = this.kaptan.logger.namespace(
-      Service.getServiceName(this)
-        .replace(/([A-Z])/g, ' $1')
-        .trim()
-        .replace(/\s+/g, '-')
-        .toLowerCase()
+      toHyphenSpace(Service.getServiceName(this))
     );
 
     this.logger.text('created');
