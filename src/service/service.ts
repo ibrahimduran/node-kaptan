@@ -13,7 +13,7 @@ export class Service extends EventEmitter {
 
     this.kaptan = kaptan;
     this.logger = this.kaptan.logger.namespace(
-      this.constructor.name
+      Service.getServiceName(this)
         .replace(/([A-Z])/g, ' $1')
         .trim()
         .replace(/\s+/g, '-')
@@ -39,6 +39,16 @@ export class Service extends EventEmitter {
   public static spawn(service: ServiceConstructor, container: ServiceContainer) {
     // TODO : inject dependencies
     return new service(container.kaptan);
+  }
+
+  public static getServiceName(service: ServiceConstructor | Service | string): string {
+    if (typeof service === 'string') {
+      return service;
+    } else if (service instanceof Service) {
+      return service.constructor.name;
+    } else {
+      return service.prototype.constructor.name;
+    }
   }
 }
 

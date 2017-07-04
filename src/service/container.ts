@@ -11,15 +11,11 @@ export class ServiceContainer {
   }
 
   public add(service: ServiceConstructor) {
-    this.list.set(service.prototype.constructor.name, service);
+    this.list.set(Service.getServiceName(service), service);
   }
 
   public get(service: ServiceConstructor | string) {
-    if (typeof service === 'string') {
-      return this.list.get(service);
-    } else {
-      return this.list.get(service.prototype.constructor.name);
-    }
+    return this.list.get(Service.getServiceName(service));
   }
 
   public each(callback: (service: ServiceConstructor, name: string) => void) {
