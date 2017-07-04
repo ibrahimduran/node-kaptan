@@ -4,8 +4,8 @@ import { Logger } from './util';
 import { ServiceConstructor, ServiceContainer } from './service';
 
 export class Kaptan extends EventEmitter {
-  public readonly services = new ServiceContainer(this);
   public readonly logger = new Logger('kaptan');
+  public readonly services = new ServiceContainer(this);
 
   constructor() {
     super();

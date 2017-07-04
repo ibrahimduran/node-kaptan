@@ -38,6 +38,8 @@ export class Service extends EventEmitter {
 
   public static spawn(service: ServiceConstructor, container: ServiceContainer) {
     // TODO : inject dependencies
+    container.logger.text('spawning ' + Service.getServiceName(service));
+
     return new service(container.kaptan);
   }
 
