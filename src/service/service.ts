@@ -20,10 +20,6 @@ export class Service extends EventEmitter {
     this.logger.text('created');
   }
 
-  public start() {
-    this.logger.text('started');
-  }
-
   public static create(name: string, handlers: IService): ServiceConstructor {
     const service = eval(`class ${name} extends Service {}`);
     for (var key in handlers) {
