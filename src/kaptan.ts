@@ -17,6 +17,5 @@ export class Kaptan extends EventEmitter {
 
   public start() {
     this.services.spawn();
-    this.logger.text('started');
   }
 }
