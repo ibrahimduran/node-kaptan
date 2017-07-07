@@ -15,3 +15,7 @@ lib-cov/
 # Build & Cache
 build/
 .npm/
+
+# Local & Misc
+.TODO
+.TASKS
