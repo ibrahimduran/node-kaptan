@@ -27,6 +27,10 @@ export class Address {
     return new Address('127.0.0.1', 3333);
   }
 
+  public static get loopback6() {
+    return new Address('::1', 3333);
+  }
+
   public static fromNetSock(netSock: NetSocket) {
     return new Address(netSock.remoteAddress, netSock.remotePort);
   }
