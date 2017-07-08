@@ -3,6 +3,10 @@ import 'colors';
 type LogColor = 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'gray';
 
 export class Logger {
+  private static Options = {
+    ENV: process.env.NODE_ENV || 'production'
+  };
+
   private static colors: LogColor[] = Logger.getAvailableColors();
 
   private color: LogColor;
@@ -26,7 +30,9 @@ export class Logger {
   }
 
   public text(msg: string) {
-    console.log(`${this.prefix} ${msg}`);
+    if (Logger.Options.ENV !== 'production') {
+      console.log(`${this.prefix} ${msg}`);
+    }
 
     return this;
   }
