@@ -23,7 +23,7 @@ export class Address {
     this.port = port;
   }
 
-  public static get local() {
+  public static get loopback() {
     return new Address('127.0.0.1', 3333);
   }
 
