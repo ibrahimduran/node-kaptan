@@ -6,8 +6,8 @@ import { Logger } from '../util';
 import { toHyphenSpace } from '../util/texts';
 
 export class Service extends EventEmitter {
-  private kaptan: Kaptan;
-  private logger: Logger;
+  protected kaptan: Kaptan;
+  protected logger: Logger;
 
   constructor(kaptan: Kaptan) {
     super();
