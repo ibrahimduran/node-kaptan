@@ -12,6 +12,14 @@ describe('Service', function () {
   class BarService extends Service {}
   let HelloService: ServiceConstructor;
 
+  it('should copy service', function () {
+    class MyOldService { test() { return '5'; } }
+    const MyNewService = Service.copy('MyNewService', MyOldService as any) as any;
+
+    assert.equal(MyNewService.prototype.constructor.name, 'MyNewService');
+    assert.equal(new MyOldService().test(), new MyNewService().test());
+  });
+
   it('should create service', function () {
     HelloService = Service.create('HelloService', {});
   });

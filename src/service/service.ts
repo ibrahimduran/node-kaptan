@@ -20,8 +20,14 @@ export class Service extends EventEmitter {
     this.logger.text('created');
   }
 
+  public static copy(name: string, service: ServiceConstructor): ServiceConstructor {
+    const newService = eval(`class ${name} extends service {}`);
+
+    return newService;
+  }
+
   public static create(name: string, handlers: IService): ServiceConstructor {
-    const service = eval(`class ${name} extends Service {}`);
+    const service = Service.copy(name, Service);
     for (var key in handlers) {
       (service as any)[key] = (handlers as any)[key];
     }
