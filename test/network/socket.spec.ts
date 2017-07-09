@@ -17,7 +17,15 @@ describe('Network/Socket', function () {
   let socket: Socket;
 
   before(function (done) {
-    server = createServer().listen(PORT).on('listening', () => done());
+    let completed = 0;
+    let check = () => {
+      completed++;
+      if (completed == 2) {
+        done();
+      }
+    };
+
+    server = createServer().listen(PORT).on('listening', () => check());
     server.on('connection', (socket: NetSocket) => {
       socket.on('data', (chunk) => {
         let str = chunk.toString();
@@ -35,7 +43,7 @@ describe('Network/Socket', function () {
       });
     });
 
-    client = createConnection({ port: PORT });
+    client = createConnection({ port: PORT }).on('connect', () => check());
   });
 
   it('should generate socket from netsocket', function () {
