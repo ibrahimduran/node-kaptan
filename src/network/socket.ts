@@ -26,15 +26,28 @@ export class Socket extends EventEmitter {
       
       this.client = remote;
     }
-    
-    this.client.on('data', (data) => {
-      const packet = Packet.fromString(String(data));
 
-      this.emit('packet', packet);
+    this.bindNetSocket(this.client);
+  }
+
+  public bindNetSocket(netSock: NetSocket) {
+    netSock.on('data', (chunk) => {
+      let str = chunk.toString();
+      let line = '';
+
+      for (let i = 0, len = str.length; i < len; i++) {
+        let chr = str[i];
+        line += chr;
+
+        if (/[\n\r]$/.test(chr)) {
+          this.emit('packet', Packet.fromString(line));
+          line = '';
+        }
+      }
     });
 
-    this.client.on('connect', () => this.emit('connection'));
-    this.client.on('end', () => this.emit('disconnect'));
+    netSock.on('connect', () => this.emit('connection'));
+    netSock.on('end', () => this.emit('disconnect'));
   }
 
   public async wait<T = {}>(options: IPacketOptions<T>) {
@@ -62,7 +75,7 @@ export class Socket extends EventEmitter {
     }
 
     this.emit('send', packet);
-    this.client.write(packet.toString());
+    this.client.write(String(packet.toString() + '\n'));
 
     if (packet.protocol === PacketProtocol.REQUEST) {
       return await this.wait((packet as Packet).resMeta);
