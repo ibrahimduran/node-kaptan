@@ -6,7 +6,8 @@
   "scripts": {
     "test": "nyc mocha",
     "build": "tsc",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "codecov": "nyc report --reporter=json && codecov -f coverage/*.json"
   },
   "nyc": {
     "extension": [
@@ -46,6 +47,7 @@
     "@types/chai": "^4.0.1",
     "@types/mocha": "^2.2.41",
     "chai": "^4.0.2",
+    "codecov": "^2.2.0",
     "mocha": "^3.4.2",
     "nyc": "^11.0.3",
     "source-map-support": "^0.4.15",
