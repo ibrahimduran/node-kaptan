@@ -10,6 +10,7 @@ import { Service } from '../service';
 import { Logger } from '../util';
 
 export class Network extends Service {
+  public static readonly PORT = process.env.PORT || 3333;
   protected server: NetServer;
   protected clientLogger: Logger;
   protected serverLogger: Logger;
@@ -22,7 +23,7 @@ export class Network extends Service {
 
     this.server = createServer()
       .on('listening', () => this.logger.text('listening'))
-      .listen(3000);
+      .listen(Network.PORT);
     
     this.server.on('connection', this.onConnection.bind(this));
   }
