@@ -3,6 +3,7 @@
   "version": "0.0.1-dev",
   "description": "All in one micro-service framework",
   "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
     "test": "nyc mocha",
     "build": "tsc",
