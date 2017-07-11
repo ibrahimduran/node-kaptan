@@ -3,8 +3,7 @@ import { EventEmitter } from 'events';
 
 import { Logger } from '../util';
 import { Address } from './address';
-import { PacketHandler } from './handler';
-import { Packet, PacketProtocol, IPacketOptions } from './packet';
+import { Packet, PacketProtocol, IPacketOptions, PacketHandler } from './packet';
 
 export class Socket extends EventEmitter {
   protected static logger: Logger;

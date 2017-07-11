@@ -1,4 +1,5 @@
 import { uid } from '../util/security';
+import { Socket } from './socket';
 
 export class Packet<T = {}> implements IPacket<T> {
   public id: string;
@@ -56,4 +57,9 @@ export enum PacketProtocol {
   RAW,
   REQUEST,
   RESPONSE
+}
+
+export interface PacketHandler {
+  onReceive? (this: Socket, data: string): any;
+  onParsed? (this: Socket, packet: Packet): any;
 }
