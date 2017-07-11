@@ -15,7 +15,7 @@ describe('Network/Network', function () {
   });
 
   it('should connect to another network', function (done) {
-    socket = network.connect('127.0.0.1', Network.Network.PORT as number);
+    socket = network.connect('127.0.0.1', Network.Network.Options.PORT as number);
     socket.client.on('connect', () => done());
   });
 

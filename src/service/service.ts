@@ -6,6 +6,8 @@ import { Logger } from '../util';
 import { toHyphenSpace } from '../util/texts';
 
 export class Service extends EventEmitter {
+  public static Options: {[key: string]: any} = {};
+  
   protected kaptan: Kaptan;
   protected logger: Logger;
 
@@ -54,6 +56,7 @@ export class Service extends EventEmitter {
 
 export interface ServiceConstructor {
   new (kaptan: Kaptan): Service;
+  Options: { [k: string]: any };
 }
 
 export interface IService {

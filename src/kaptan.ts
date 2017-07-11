@@ -11,7 +11,12 @@ export class Kaptan extends EventEmitter {
     super();
   }
 
-  public use(service: ServiceConstructor) {
+  public use(service: ServiceConstructor, options: {[key:string]: any} = {}) {
+    if (!service.Options) {
+      service.Options = {};
+    }
+
+    service.Options = { ...service.Options, ...options };
     this.services.add(service);
   }
 
