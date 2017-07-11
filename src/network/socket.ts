@@ -3,6 +3,7 @@ import { EventEmitter } from 'events';
 
 import { Logger } from '../util';
 import { Address } from './address';
+import { PacketHandler } from './handler';
 import { Packet, PacketProtocol, IPacketOptions } from './packet';
 
 export class Socket extends EventEmitter {
@@ -40,6 +41,7 @@ export class Socket extends EventEmitter {
         line += chr;
 
         if (/[\n\r]$/.test(chr)) {
+          this.emit('line', line);
           this.emit('packet', Packet.fromString(line));
           line = '';
         }
@@ -48,6 +50,26 @@ export class Socket extends EventEmitter {
 
     netSock.on('connect', () => this.emit('connection'));
     netSock.on('end', () => this.emit('disconnect'));
+  }
+
+  public addPacketHandler(handler: PacketHandler) {
+    if (handler.onParsed) {
+      this.addListener('packet', handler.onParsed);
+    }
+
+    if (handler.onReceive) {
+      this.addListener('line', handler.onReceive);
+    }
+  }
+
+  public removePacketHandler(handler: PacketHandler) {
+    if (handler.onParsed) {
+      this.removeListener('packet', handler.onParsed);
+    }
+
+    if (handler.onReceive) {
+      this.removeListener('line', handler.onReceive);
+    }
   }
 
   public async wait<T = {}>(options: IPacketOptions<T>) {

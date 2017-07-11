@@ -4,7 +4,7 @@ import {
   Socket as NetSocket
 } from 'net';
 
-import { Socket, Packet, Address } from './';
+import { Socket, Packet, PacketHandler, Address } from './';
 import { Kaptan } from '../kaptan';
 import { Service } from '../service';
 import { Logger } from '../util';
@@ -31,6 +31,14 @@ export class Network extends Service {
     this.server.on('connection', this.onConnection.bind(this));
   }
 
+  public addPacketHandler(handler: PacketHandler) {
+    this.emit('addHandler', handler)
+  }
+
+  public removePacketHandler(handler: PacketHandler) {
+    this.emit('removeHandler', handler);
+  }
+
   // Outgoing connection - client
   public connect(addr: string, port: number): Socket {
     const socket = new Socket(new Address(addr, port));
@@ -52,6 +60,9 @@ export class Network extends Service {
   // Incoming connection - server
   private onConnection(netSock: NetSocket) {
     const socket = Socket.fromNetSocket(netSock);
+
+    this.on('addHandler', handler => socket.addPacketHandler(handler));
+    this.on('removeHandler', handler => socket.removePacketHandler(handler));
 
     this.serverLogger.text(`incoming connection from ${socket.remoteAddr.endpoint}`);
     
