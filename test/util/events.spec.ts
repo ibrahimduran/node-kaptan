@@ -1,13 +1,14 @@
 import 'mocha';
+import { assert } from 'chai';
 
-import { emitEventsSync } from '../../build/util/events';
+import { Events } from '../../build/util/events';
 
 describe('Utils/events', function () {
-  it('should emit events sync with callback and promise support', function (done) {
+  it('should run callbacks sync', function (done) {
     var completed = 0;
     var complete = () => {
       completed++;
-      if (completed == 4) {
+      if (completed == 5) {
         done();
       }
     };
@@ -34,6 +35,37 @@ describe('Utils/events', function () {
       )
     ];
 
-    emitEventsSync(callbacks);
+    Events.runIntercepted(callbacks).then(() => done());    
+  });
+
+  it('should handler intercepted events', async function () {
+    const em = new Events();
+
+    em.onIntercepted('increment', (data) => {
+      console.log('incremented data: ', data);
+      data.num++;
+    });
+    
+    em.onIntercepted('increment', (data) => {
+      console.log('incremented data: ', data);
+      data.num++;
+    });
+
+    em.onceIntercepted('increment', (data) => {
+      console.log('incremented data: ', data);
+      data.num++;
+    });
+
+    let data = { num: 0 };
+    
+    await em.emitIntercepted('increment', data);
+    assert.equal(data.num, 3);
+    
+    data.num = 0;
+    
+    await em.emitIntercepted('increment', data);
+    assert.equal(data.num, 2);
   });
 });
+
+
