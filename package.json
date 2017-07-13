@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
+    "preversion": "npm run build && npm run test",
     "test": "nyc mocha",
     "build": "tsc",
     "watch": "tsc --watch",
