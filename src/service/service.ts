@@ -1,11 +1,9 @@
-import { EventEmitter } from 'events';
-
 import { ServiceContainer } from '../service';
 import { Kaptan } from '../kaptan';
-import { Logger } from '../util';
+import { Logger, Events } from '../util';
 import { toHyphenSpace } from '../util/texts';
 
-export class Service extends EventEmitter {
+export class Service extends Events {
   public static Options: {[key: string]: any} = {};
   
   protected kaptan: Kaptan;
