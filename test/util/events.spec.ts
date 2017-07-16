@@ -42,17 +42,14 @@ describe('Utils/events', function () {
     const em = new Events();
 
     em.onIntercepted('increment', (data) => {
-      console.log('incremented data: ', data);
       data.num++;
     });
     
     em.onIntercepted('increment', (data) => {
-      console.log('incremented data: ', data);
       data.num++;
     });
 
     em.onceIntercepted('increment', (data) => {
-      console.log('incremented data: ', data);
       data.num++;
     });
 
