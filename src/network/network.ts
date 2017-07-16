@@ -63,6 +63,7 @@ export class Network extends Service {
 
     this.on('addHandler', handler => socket.addPacketHandler(handler));
     this.on('removeHandler', handler => socket.removePacketHandler(handler));
+    this.emit('socket', socket);
 
     this.serverLogger.text(`incoming connection from ${socket.remoteAddr.endpoint}`);
     
@@ -77,6 +78,8 @@ export class Network extends Service {
       this.serverLogger.text(`sending packet to ${socket.remoteAddr.endpoint}`);
     });
 
+    socket.on('disconnect', () => this.emit('disconnect', socket));
+    socket.on('connection', () => this.emit('connection', socket));
     socket.on('packet', (packet) => this.emit('packet', socket, packet));
   }
 }
