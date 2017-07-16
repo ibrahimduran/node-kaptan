@@ -32,11 +32,13 @@ export class Network extends Service {
   }
 
   public addPacketHandler(handler: PacketHandler) {
-    this.emit('addHandler', handler)
+    this.on('socket', (socket: Socket) => {
+      socket.addPacketHandler(handler);
+    });
   }
 
   public removePacketHandler(handler: PacketHandler) {
-    this.emit('removeHandler', handler);
+    throw new Error('Not implemented');
   }
 
   // Outgoing connection - client
@@ -60,9 +62,6 @@ export class Network extends Service {
   // Incoming connection - server
   private onConnection(netSock: NetSocket) {
     const socket = Socket.fromNetSocket(netSock);
-
-    this.on('addHandler', handler => socket.addPacketHandler(handler));
-    this.on('removeHandler', handler => socket.removePacketHandler(handler));
     this.emit('socket', socket);
 
     this.serverLogger.text(`incoming connection from ${socket.remoteAddr.endpoint}`);
