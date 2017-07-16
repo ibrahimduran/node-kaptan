@@ -1,7 +1,7 @@
 import { uid } from '../util/security';
 import { Socket } from './socket';
 
-export class Packet<T = {}> implements IPacket<T> {
+export class Packet<T = any> implements IPacket<T> {
   public id: string;
   public protocol: PacketProtocol;
   public ref?: string;
@@ -34,12 +34,12 @@ export class Packet<T = {}> implements IPacket<T> {
     return new Packet<string>({ data, protocol: PacketProtocol.RAW });
   }
 
-  public static fromString<T = {}>(str: string): Packet<T> {
+  public static fromString<T = any>(str: string): Packet<T> {
     return new Packet<T>(JSON.parse(str));
   }
 }
 
-export interface IPacket<T = {}> {
+export interface IPacket<T = any> {
   id: string;
   protocol: PacketProtocol;
   ref?: string;
