@@ -36,11 +36,11 @@ export class RemoteService extends Service {
 
   private initServer(services: ServiceContainer) {
     this.logger.text('initializing remote service');
-    const logger = this.logger;
+    const self = this;
     this.network.addPacketHandler({
       onParsed(packet: Packet) {
         if (packet.protocol === PacketProtocol.REQUEST && packet.ref === 'RemoteService#init') {
-          logger.text('incoming remote service request');
+          self.logger.text('incoming remote service request');
           const res = packet.resMeta;
 
           try {
@@ -50,13 +50,23 @@ export class RemoteService extends Service {
             
             const service = services.spawn(packet.data.name) as RemoteService;
             res.data = service.getServiceState();
+
+            self.on('update', (state) => {
+              this.send(new Packet({
+                ref: 'RemoteService#update',
+                data: {
+                  service: Service.getServiceName(self),
+                  state
+                }
+              }));
+            });
           } catch (err) {
             res.data = {
               error: err.toString()
             };
           }
 
-          logger.text('sending remote service response');
+          self.logger.text('sending remote service response');
           this.send(res);
         }
       }
@@ -77,14 +87,29 @@ export class RemoteService extends Service {
     if (response.data && response.data.error) {
       throw new Error(response.data.error);
     } else {
+      const self = this;
+
+      this.remote.addPacketHandler({
+        onParsed(packet: Packet) {
+          if (packet.ref === 'RemoteService#update' && packet.data && packet.data.service === self.remoteName) {
+            self.setState(packet.data.state);
+          }
+        }
+      })
       this.emit('init');
       this.clientLogger.text('connection established');
     }
   }
 
-  public diffServiceState(prev: any, next: any): {[key: string]: any} {
-    // TODO: implement this
-    return {};
+  public setState(state: {[key: string]: any}) {
+    this.logger.text('updating state with ' + JSON.stringify(state));
+
+    for(var key in state) {
+      this.state[key] = state[key];
+      this.emit('update:' + key, state);
+    }
+
+    this.emit('update', state);
   }
 
   public getServiceState(): {[key: string]: any} {
