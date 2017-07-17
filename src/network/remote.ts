@@ -63,22 +63,23 @@ export class RemoteService extends Service {
     });
   }
 
-  private initClient() {
+  private async initClient() {
     this.clientLogger.text('initializing connection');
-    this.remote.send({
+    
+    const response = await this.remote.send({
       ref: 'RemoteService#init',
       protocol: PacketProtocol.REQUEST,
       data: {
         name: this.remoteName
       }
-    }).then((packet: Packet) => {
-      if (packet.data && packet.data.error) {
-        throw new Error(packet.data.error);
-      } else {
-        this.emit('init');
-        this.clientLogger.text('connection established');
-      }
-    });
+    }) as Packet;
+
+    if (response.data && response.data.error) {
+      throw new Error(response.data.error);
+    } else {
+      this.emit('init');
+      this.clientLogger.text('connection established');
+    }
   }
 
   public diffServiceState(prev: any, next: any): {[key: string]: any} {
