@@ -27,7 +27,7 @@ export class Network extends Service {
     const self = <typeof Network>this.constructor;
 
     this.server = createServer()
-      .on('listening', () => this.logger.text('listening'))
+      .on('listening', () => this.logger.text('listening on ' + this.server.address().port))
       .listen(self.Options.PORT);
     
     this.server.on('connection', this.onConnection.bind(this));
