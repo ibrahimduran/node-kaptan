@@ -37,6 +37,8 @@ export class Network extends Service {
     this.on('socket', (socket: Socket) => {
       socket.addPacketHandler(handler);
     });
+
+    this.emit('addHandler', handler);
   }
 
   public removePacketHandler(handler: PacketHandler) {
@@ -65,6 +67,7 @@ export class Network extends Service {
   private onConnection(netSock: NetSocket) {
     const socket = Socket.fromNetSocket(netSock);
     this.emit('socket', socket);
+    this.on('addHandler', handler => socket.addPacketHandler(handler));
 
     this.serverLogger.text(`incoming connection from ${socket.remoteAddr.endpoint}`);
     
