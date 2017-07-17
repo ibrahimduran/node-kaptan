@@ -23,10 +23,12 @@ export class Network extends Service {
 
     this.clientLogger = this.logger.namespace('client');
     this.serverLogger = this.logger.namespace('server');
+    
+    const self = <typeof Network>this.constructor;
 
     this.server = createServer()
       .on('listening', () => this.logger.text('listening'))
-      .listen(Network.Options.PORT);
+      .listen(self.Options.PORT);
     
     this.server.on('connection', this.onConnection.bind(this));
   }
