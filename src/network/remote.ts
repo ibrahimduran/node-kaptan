@@ -73,7 +73,7 @@ export class RemoteService extends Service {
       }
     }).then((packet: Packet) => {
       if (packet.data && packet.data.error) {
-        throw new Error((packet.data as any).error);
+        throw new Error(packet.data.error);
       } else {
         this.emit('init');
         this.clientLogger.text('connection established');
