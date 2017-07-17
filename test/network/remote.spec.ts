@@ -1,6 +1,7 @@
 import 'mocha';
 
 import * as getPort from 'get-port';
+import { assert } from 'chai';
 import { Kaptan } from '../../build/kaptan';
 import { Network, Address, RemoteService } from '../../build/network';
 
@@ -50,7 +51,7 @@ describe('Network/RemoteService', function () {
     });
 
     (<MyService>clientKaptan.services.spawn('MyService'))
-      .on('init', () => { established = true; });
+      .once('init', () => { established = true; });
   
     clientKaptan.start();
   });
@@ -61,7 +62,18 @@ describe('Network/RemoteService', function () {
       done();
     } else {
       (<MyService>clientKaptan.services.spawn('MyService'))
-        .on('init', () => done());
+        .once('init', () => done());
     }
+  });
+
+  it('should update state in server and client', function (done) {
+    (<MyService>clientKaptan.services.spawn('MyService'))
+      .on('update:num', (state) => {
+        assert.equal(state.num, 5);
+      })
+      .on('update', () => done());
+
+    (<MyService>serverKaptan.services.spawn('MyService'))
+        .setState({ num: 5 });
   });
 });
