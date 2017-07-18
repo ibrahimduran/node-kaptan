@@ -99,6 +99,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="servicecontainer.html#add" class="tsd-kind-icon">add</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="servicecontainer.html#each" class="tsd-kind-icon">each</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="servicecontainer.html#get" class="tsd-kind-icon">get</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="servicecontainer.html#getconstructor" class="tsd-kind-icon">get<wbr>Constructor</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="servicecontainer.html#getoptions" class="tsd-kind-icon">get<wbr>Options</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="servicecontainer.html#spawn" class="tsd-kind-icon">spawn</a></li>
 							</ul>
 						</section>
@@ -117,7 +119,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/c79e16c/src/service/container.ts#L9">service/container.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/service/container.ts#L9">service/container.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -139,7 +141,7 @@
 					<div class="tsd-signature tsd-kind-icon">instances<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="service.html" class="tsd-signature-type">Service</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;string, Service&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/c79e16c/src/service/container.ts#L7">service/container.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/service/container.ts#L7">service/container.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -149,17 +151,17 @@
 					<div class="tsd-signature tsd-kind-icon">kaptan<span class="tsd-signature-symbol">:</span> <a href="kaptan.html" class="tsd-signature-type">Kaptan</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/c79e16c/src/service/container.ts#L6">service/container.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/service/container.ts#L6">service/container.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="list" class="tsd-anchor"></a>
 					<h3>list</h3>
-					<div class="tsd-signature tsd-kind-icon">list<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;string, ServiceConstructor&gt;()</span></div>
+					<div class="tsd-signature tsd-kind-icon">list<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="iserviceoptions.html" class="tsd-signature-type">IServiceOptions</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;string, IServiceOptions&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/c79e16c/src/service/container.ts#L8">service/container.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/service/container.ts#L8">service/container.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -169,7 +171,7 @@
 					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <a href="logger.html" class="tsd-signature-type">Logger</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/c79e16c/src/service/container.ts#L9">service/container.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/service/container.ts#L9">service/container.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -180,19 +182,24 @@
 					<a name="add" class="tsd-anchor"></a>
 					<h3>add</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/c79e16c/src/service/container.ts#L16">service/container.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/service/container.ts#L16">service/container.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>service: <a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
+									<ul class="tsd-parameters">
+									</ul>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -209,7 +216,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/c79e16c/src/service/container.ts#L24">service/container.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/service/container.ts#L45">service/container.ts:45</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -219,7 +226,7 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a>, name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a>, name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
@@ -230,6 +237,14 @@
 														</li>
 														<li>
 															<h5>name: <span class="tsd-signature-type">string</span></h5>
+														</li>
+														<li>
+															<h5>options: <span class="tsd-signature-type">object</span></h5>
+															<ul class="tsd-parameters">
+																<li class="tsd-parameter-index-signature">
+																	<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></h5>
+																</li>
+															</ul>
 														</li>
 													</ul>
 													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -247,13 +262,13 @@
 					<a name="get" class="tsd-anchor"></a>
 					<h3>get</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a></li>
+						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="iserviceoptions.html" class="tsd-signature-type">IServiceOptions</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/c79e16c/src/service/container.ts#L20">service/container.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/service/container.ts#L41">service/container.ts:41</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -264,7 +279,59 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span>
 								<span class="tsd-signature-symbol"> | </span>
-								<a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a>
+								<a href="iserviceoptions.html" class="tsd-signature-type">IServiceOptions</a>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getconstructor" class="tsd-anchor"></a>
+					<h3>get<wbr>Constructor</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Constructor<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/service/container.ts#L23">service/container.ts:23</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>service: <a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">undefined</span>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getoptions" class="tsd-anchor"></a>
+					<h3>get<wbr>Options</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Options<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/service/container.ts#L32">service/container.ts:32</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>service: <a href="../interfaces/serviceconstructor.html" class="tsd-signature-type">ServiceConstructor</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">undefined</span>
 							</h4>
 						</li>
 					</ul>
@@ -279,7 +346,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/c79e16c/src/service/container.ts#L28">service/container.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/service/container.ts#L49">service/container.ts:49</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -318,6 +385,9 @@
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="events.html" class="tsd-kind-icon">Events</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="iserviceoptions.html" class="tsd-kind-icon">IService<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="kaptan.html" class="tsd-kind-icon">Kaptan</a>
@@ -368,6 +438,12 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="servicecontainer.html#get" class="tsd-kind-icon">get</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="servicecontainer.html#getconstructor" class="tsd-kind-icon">get<wbr>Constructor</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="servicecontainer.html#getoptions" class="tsd-kind-icon">get<wbr>Options</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="servicecontainer.html#spawn" class="tsd-kind-icon">spawn</a>

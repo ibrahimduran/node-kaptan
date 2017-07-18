@@ -64,6 +64,62 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<h1 id="kaptan">Kaptan</h1>
+				<blockquote>
+					<p>All in one micro-service framework with minimum dependencies and fast, simple design. Most suitable for distributed applications and applications that serves multiple endpoints. The main concept behind <em>Kaptan</em> framework is using services to develop application.</p>
+				</blockquote>
+				<h2 id="getting-started">Getting Started</h2>
+				<p>You can install <em>Kaptan</em> framework from npm. For TypeScript users, all type definitions are served with the main package, you don&#39;t need to install it separately.</p>
+				<pre><code class="lang-sh">$ npm install --save kaptan
+</code></pre>
+				<h3 id="creating-an-application">Creating an application</h3>
+				<pre><code class="lang-js"><span class="hljs-keyword">import</span> { Kaptan } <span class="hljs-keyword">from</span> <span class="hljs-string">'kaptan'</span>;
+
+<span class="hljs-comment">// first param is optional and it's used in logs to prevent mess</span>
+<span class="hljs-comment">// when you have multiple instances</span>
+<span class="hljs-keyword">const</span> kaptan = <span class="hljs-keyword">new</span> Kaptan(<span class="hljs-string">'my-app'</span>);
+</code></pre>
+				<p>Or feel free to extend <code>Kaptan</code> class:</p>
+				<pre><code class="lang-js"><span class="hljs-keyword">import</span> { Kaptan } <span class="hljs-keyword">from</span> <span class="hljs-string">'kaptan'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Kaptan</span> </span>{
+  <span class="hljs-keyword">constructor</span>() {
+    <span class="hljs-keyword">super</span>();
+
+    <span class="hljs-comment">// (lines below are only visible to who believes in unicorns)</span>
+    <span class="hljs-comment">// My secret code - start</span>
+
+
+    <span class="hljs-comment">// My secret code - end</span>
+  }
+}
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> MyApp();
+</code></pre>
+				<h3 id="adding-services-to-application">Adding services to application</h3>
+				<pre><code class="lang-js"><span class="hljs-comment">// you can install services from npm</span>
+<span class="hljs-keyword">import</span> { CustomService } <span class="hljs-keyword">from</span> <span class="hljs-string">'kaptan-foo-bar'</span>;
+
+<span class="hljs-comment">// second param is used to specify options for service</span>
+kaptan.use(CustomService, { <span class="hljs-attr">X</span>: <span class="hljs-literal">false</span> });
+</code></pre>
+				<h3 id="starting-application">Starting application</h3>
+				<p>This will fire up application and create service instances.</p>
+				<pre><code class="lang-js">kaptan.start();
+</code></pre>
+				<h3 id="developing-services">Developing Services</h3>
+				<pre><code class="lang-js"><span class="hljs-keyword">import</span> { Service } <span class="hljs-keyword">from</span> <span class="hljs-string">'kaptan'</span>;
+
+<span class="hljs-comment">// Services are created by extending Service class</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyService</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Service</span> </span>{
+  <span class="hljs-comment">// Service class takes kaptan instances as the first param</span>
+  <span class="hljs-keyword">constructor</span>(kaptan) {
+    <span class="hljs-comment">// You can use this kaptan object to access other</span>
+    <span class="hljs-comment">// services and util methods</span>
+    <span class="hljs-keyword">const</span> fooBar = kaptan.services.spawn(<span class="hljs-string">'FooBar'</span>);
+  }
+}
+</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -87,6 +143,9 @@
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/events.html" class="tsd-kind-icon">Events</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/iserviceoptions.html" class="tsd-kind-icon">IService<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/kaptan.html" class="tsd-kind-icon">Kaptan</a>
