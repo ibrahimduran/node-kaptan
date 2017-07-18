@@ -1,5 +1,13 @@
-# Kaptan
+# Kaptan [![NPM](https://img.shields.io/npm/v/kaptan.svg)](https://www.npmjs.com/package/kaptan) [![License](https://img.shields.io/npm/l/kaptan.svg)](LICENSE) [![Build Status](https://travis-ci.org/ibrahimduran/node-kaptan.svg?branch=master)](https://travis-ci.org/ibrahimduran/node-kaptan) [![Codecov](https://codecov.io/gh/ibrahimduran/node-kaptan/branch/master/graph/badge.svg)](https://codecov.io/gh/ibrahimduran/node-kaptan)
 > All in one micro-service framework with minimum dependencies and simplistic design. Most suitable for distributed applications and applications that serve multiple endpoints. The main concept behind _Kaptan_ framework is using services as parts to build application.
+
+- [Getting Started](#getting-started)
+    - [Creating an application](#creating-an-application)
+    - [Adding services to application](#adding-services-to-application)
+    - [Starting application](#starting-application)
+    - [Developing services](#developing-services)
+- [Network](#network)
+    - [Using the service](#using-the-service)
 
 ## Getting Started
 You can install _Kaptan_ framework and its services easily from NPM using your favorite tool. 
