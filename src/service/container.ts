@@ -20,6 +20,24 @@ export class ServiceContainer {
     });
   }
 
+  public getConstructor(service: ServiceConstructor | string): ServiceConstructor | undefined {
+    const serviceOpts = this.get(service);
+    if (!serviceOpts) {
+      return undefined;
+    } else {
+      return serviceOpts.service;
+    }
+  }
+
+  public getOptions(service: ServiceConstructor | string): {[key: string]: any} | undefined {
+    const serviceOpts = this.get(service);
+    if (!serviceOpts) {
+      return undefined;
+    } else {
+      return serviceOpts.options;
+    }
+  }
+
   public get(service: ServiceConstructor | string) {
     return this.list.get(Service.getServiceName(service));
   }
