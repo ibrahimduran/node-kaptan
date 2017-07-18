@@ -36,8 +36,8 @@ describe('Service', function () {
   });
 
   it('should return service', function () {
-    assert.equal(MyService, container.get('MyService'));
-    assert.equal(MyService, container.get(MyService));
+    assert.equal(MyService, container.getConstructor('MyService'));
+    assert.equal(MyService, container.getConstructor(MyService));
   });
 
   it('should loop through all services', function () {
@@ -53,7 +53,7 @@ describe('Service', function () {
     let services = Array.from(container.list.values());
     container.spawn();
     container.instances.forEach((instance) => {
-      services = services.filter(service => !(instance instanceof service))
+      services = services.filter(service => !(instance instanceof service.service))
     });
 
     assert.equal(services.length, 0);
@@ -65,6 +65,20 @@ describe('Service', function () {
     
     const instance = container.spawn(LonelyService);
     assert.equal(instance instanceof LonelyService, true);
+  });
+
+  it('should return constructor or options of service', function () {
+    class TestService extends Service {}
+    const options = { FOO: 'BAR' };
+    container.add(TestService, options);
+
+    assert.equal(container.getConstructor(TestService), TestService);
+    assert.equal(container.getOptions(TestService), options);
+  });
+
+  it('should try to get constructor or options of non existing service', function () {
+    assert.equal(container.getConstructor('NotExisting'), undefined);
+    assert.equal(container.getOptions('NotExisting'), undefined);
   });
 
   it('should return spawned service', function () {

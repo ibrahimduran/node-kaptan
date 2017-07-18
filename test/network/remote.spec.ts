@@ -18,7 +18,6 @@ describe('Network/RemoteService', function () {
       serverKaptan.use(Network, { PORT: SERVER_PORT });
 
       getPort().then((cPort: number) => {
-        
         CLIENT_PORT = cPort;
         clientKaptan.use(Network, { PORT: CLIENT_PORT });
         done();
@@ -34,9 +33,8 @@ describe('Network/RemoteService', function () {
   });
 
   it('should throw name is required error', function (done) {
-    MyService.Options.REMOTE = Address.loopback;
     try {
-      new MyService(clientKaptan);
+      new MyService(clientKaptan, { REMOTE: Address.loopback });
       done('it did not throw error');
     } catch (err) {
       done();
