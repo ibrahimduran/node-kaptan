@@ -5,7 +5,7 @@ import { Logger } from '../util';
 export class ServiceContainer {
   public readonly kaptan: Kaptan;
   public readonly instances: Map<string, Service> = new Map<string, Service>();
-  public readonly list: Map<string, ServiceConstructor> = new Map<string, ServiceConstructor>();
+  public readonly list: Map<string, IServiceOptions> = new Map<string, IServiceOptions>();
   public readonly logger: Logger;
 
   constructor(kaptan: Kaptan) {
@@ -13,16 +13,19 @@ export class ServiceContainer {
     this.logger = kaptan.logger.namespace('container');
   }
 
-  public add(service: ServiceConstructor) {
-    this.list.set(Service.getServiceName(service), service);
+  public add(service: ServiceConstructor, options = {}) {
+    this.list.set(Service.getServiceName(service), {
+      service,
+      options
+    });
   }
 
   public get(service: ServiceConstructor | string) {
     return this.list.get(Service.getServiceName(service));
   }
 
-  public each(callback: (service: ServiceConstructor, name: string) => void) {
-    return this.list.forEach(callback);
+  public each(callback: (service: ServiceConstructor, name: string, options: {[key: string]: any}) => void) {
+    return this.list.forEach((value, key) => callback(value.service, key, value.options));
   }
 
   public spawn(service?: ServiceConstructor | string): Service | void {
@@ -31,22 +34,27 @@ export class ServiceContainer {
       if (this.instances.has(serviceName)) {
         return this.instances.get(serviceName);
       } else {
-        const constructor = this.list.get(serviceName);
-        if (!constructor) {
+        const serviceOpts = this.list.get(serviceName);
+        if (!serviceOpts) {
           throw new Error('Service not found! ' + serviceName);
         }
 
-        const instance = Service.spawn(constructor, this);
+        const instance = Service.spawn(serviceOpts.service, this, serviceOpts.options);
         this.instances.set(serviceName, instance);
 
         return instance;
       }
     } else {
-      this.each((service, name) => {
+      this.each((service, name, options) => {
         if (!this.instances.has(name)) {
-          this.instances.set(name, Service.spawn(service, this));
+          this.instances.set(name, Service.spawn(service, this, options));
         }
       });
     }
   }
+}
+
+export class IServiceOptions {
+  service: ServiceConstructor;
+  options: {[key: string]: any};
 }

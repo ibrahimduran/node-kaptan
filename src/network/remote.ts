@@ -4,8 +4,6 @@ import { Network, Packet, Address, Socket, PacketProtocol } from '../network';
 import { Logger } from '../util';
 
 export class RemoteService extends Service {
-  public static Options: RemoteServiceOptions = {};
-
   protected readonly clientLogger: Logger;
   protected readonly network: Network;
   protected readonly remote: Socket;
@@ -13,20 +11,21 @@ export class RemoteService extends Service {
 
   public readonly state: {[key: string]: any} = {};
 
-  constructor(kaptan: Kaptan) {
-    super(kaptan);
+  constructor(kaptan: Kaptan, options = {}) {
+    super(kaptan, {
+      ...options
+    });
 
     this.network = kaptan.services.spawn('Network') as Network;
     this.clientLogger = this.logger.namespace('remote');
 
-    const self = <typeof RemoteService>this.constructor;
-    if (self.Options.REMOTE) {
-      if (!self.Options.NAME) {
+    if (this.options.REMOTE) {
+      if (!this.options.NAME) {
         throw new Error('Remote service name must be supplied as parameter!');
       }
         
-      this.remoteName = self.Options.NAME;
-      this.remote = new Socket(self.Options.REMOTE);
+      this.remoteName = this.options.NAME;
+      this.remote = new Socket(this.options.REMOTE);
 
       this.initClient();
     } else {

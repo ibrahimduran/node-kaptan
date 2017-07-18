@@ -10,25 +10,23 @@ import { Service } from '../service';
 import { Logger } from '../util';
 
 export class Network extends Service {
-  public static Options = {
-    PORT: process.env.PORT || 3333
-  };
-
   protected server: NetServer;
   protected clientLogger: Logger;
   protected serverLogger: Logger;
 
-  constructor(kaptan: Kaptan) {
-    super(kaptan);
+  constructor(kaptan: Kaptan, options = {}) {
+    console.log('Network Options: ', options);
+    super(kaptan, {
+      PORT: process.env.PORT || 3333,
+      ...options
+    });
 
     this.clientLogger = this.logger.namespace('client');
     this.serverLogger = this.logger.namespace('server');
     
-    const self = <typeof Network>this.constructor;
-
     this.server = createServer()
       .on('listening', () => this.logger.text('listening on ' + this.server.address().port))
-      .listen(self.Options.PORT);
+      .listen(this.options.PORT);
     
     this.server.on('connection', this.onConnection.bind(this));
   }

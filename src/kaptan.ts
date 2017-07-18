@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 
 import { Logger } from './util';
-import { Service, ServiceConstructor, ServiceContainer } from './service';
+import { ServiceConstructor, ServiceContainer } from './service';
 
 export class Kaptan extends EventEmitter {
   public readonly logger: Logger;
@@ -15,14 +15,7 @@ export class Kaptan extends EventEmitter {
   }
 
   public use(service: ServiceConstructor, options: {[key:string]: any} = {}) {
-    service = Service.copy(Service.getServiceName(service), service);
-    
-    if (!service.Options) {
-      service.Options = {};
-    }
-
-    service.Options = { ...service.Options, ...options };
-    this.services.add(service);
+    this.services.add(service, options);
   }
 
   public start() {
