@@ -71,4 +71,13 @@ describe('Service', function () {
     const instance = container.spawn('MyService');
     assert.equal(instance instanceof Service, true);
   });
+
+  it('should throw not existing error', function (done) {
+    try {
+      container.spawn('NotExisting');
+      done('did not throw an error');
+    } catch (err) {
+      done();
+    }
+  });
 });
