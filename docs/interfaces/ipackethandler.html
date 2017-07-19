@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PacketHandler | kaptan</title>
+	<title>IPacketHandler | kaptan</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="packethandler.html">PacketHandler</a>
+					<a href="ipackethandler.html">IPacketHandler</a>
 				</li>
 			</ul>
-			<h1>Interface PacketHandler</h1>
+			<h1>Interface IPacketHandler</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PacketHandler</span>
+						<span class="target">IPacketHandler</span>
 					</li>
 				</ul>
 			</section>
@@ -79,13 +79,32 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ipackethandler.html#filter" class="tsd-kind-icon">filter</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="packethandler.html#onparsed" class="tsd-kind-icon">on<wbr>Parsed</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="packethandler.html#onreceive" class="tsd-kind-icon">on<wbr>Receive</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="ipackethandler.html#onparsed" class="tsd-kind-icon">on<wbr>Parsed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="ipackethandler.html#onreceive" class="tsd-kind-icon">on<wbr>Receive</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="filter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> filter</h3>
+					<div class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">:</span> <a href="../globals.html#ipacketfilter" class="tsd-signature-type">IPacketFilter</a><span class="tsd-signature-symbol"> | </span><a href="../classes/packetfilter.html" class="tsd-signature-type">PacketFilter</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/handler.ts#L73">network/handler.ts:73</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -94,25 +113,25 @@
 					<a name="onparsed" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> on<wbr>Parsed</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Parsed<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../classes/socket.html" class="tsd-signature-type">Socket</a>, packet<span class="tsd-signature-symbol">: </span><a href="../classes/packet.html" class="tsd-signature-type">Packet</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+						<li class="tsd-signature tsd-kind-icon">on<wbr>Parsed<span class="tsd-signature-symbol">(</span>socket<span class="tsd-signature-symbol">: </span><a href="../classes/socket.html" class="tsd-signature-type">Socket</a>, packet<span class="tsd-signature-symbol">: </span><a href="../classes/packet.html" class="tsd-signature-type">Packet</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/network/packet.ts#L64">network/packet.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/handler.ts#L75">network/handler.ts:75</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>this: <a href="../classes/socket.html" class="tsd-signature-type">Socket</a></h5>
+									<h5>socket: <a href="../classes/socket.html" class="tsd-signature-type">Socket</a></h5>
 								</li>
 								<li>
 									<h5>packet: <a href="../classes/packet.html" class="tsd-signature-type">Packet</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -120,25 +139,25 @@
 					<a name="onreceive" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> on<wbr>Receive</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Receive<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../classes/socket.html" class="tsd-signature-type">Socket</a>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+						<li class="tsd-signature tsd-kind-icon">on<wbr>Receive<span class="tsd-signature-symbol">(</span>socket<span class="tsd-signature-symbol">: </span><a href="../classes/socket.html" class="tsd-signature-type">Socket</a>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/network/packet.ts#L63">network/packet.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/handler.ts#L74">network/handler.ts:74</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>this: <a href="../classes/socket.html" class="tsd-signature-type">Socket</a></h5>
+									<h5>socket: <a href="../classes/socket.html" class="tsd-signature-type">Socket</a></h5>
 								</li>
 								<li>
 									<h5>data: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -175,14 +194,17 @@
 					<li class=" tsd-kind-class">
 						<a href="../classes/logger.html" class="tsd-kind-icon">Logger</a>
 					</li>
-					<li class=" tsd-kind-class tsd-is-not-exported">
-						<a href="../classes/myservice.html" class="tsd-kind-icon">My<wbr>Service</a>
-					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/network.html" class="tsd-kind-icon">Network</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="../classes/packet.html" class="tsd-kind-icon">Packet</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/packetfilter.html" class="tsd-kind-icon">Packet<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/packethandler.html" class="tsd-kind-icon">Packet<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/remoteservice.html" class="tsd-kind-icon">Remote<wbr>Service</a>
@@ -199,41 +221,41 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="ipacket.html" class="tsd-kind-icon">IPacket</a>
 					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
+						<a href="ipackethandler.html" class="tsd-kind-icon">IPacket<wbr>Handler</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ipackethandler.html#filter" class="tsd-kind-icon">filter</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="ipackethandler.html#onparsed" class="tsd-kind-icon">on<wbr>Parsed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="ipackethandler.html#onreceive" class="tsd-kind-icon">on<wbr>Receive</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="ipacketoptions.html" class="tsd-kind-icon">IPacket<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="iservice.html" class="tsd-kind-icon">IService</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
-						<a href="packethandler.html" class="tsd-kind-icon">Packet<wbr>Handler</a>
-						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="packethandler.html#onparsed" class="tsd-kind-icon">on<wbr>Parsed</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="packethandler.html#onreceive" class="tsd-kind-icon">on<wbr>Receive</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="remoteserviceoptions.html" class="tsd-kind-icon">Remote<wbr>Service<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="serviceconstructor.html" class="tsd-kind-icon">Service<wbr>Constructor</a>
 					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#ipacketfilter" class="tsd-kind-icon">IPacket<wbr>Filter</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-is-not-exported">
 						<a href="../globals.html#logcolor" class="tsd-kind-icon">Log<wbr>Color</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#clientkaptan" class="tsd-kind-icon">client<wbr>Kaptan</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#serverkaptan" class="tsd-kind-icon">server<wbr>Kaptan</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#tohyphenspace" class="tsd-kind-icon">to<wbr>Hyphen<wbr>Space</a>

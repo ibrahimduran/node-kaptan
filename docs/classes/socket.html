@@ -118,7 +118,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="socket.html#removepackethandler" class="tsd-kind-icon">remove<wbr>Packet<wbr>Handler</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="socket.html#send" class="tsd-kind-icon">send</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="socket.html#setmaxlisteners" class="tsd-kind-icon">set<wbr>Max<wbr>Listeners</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="socket.html#wait" class="tsd-kind-icon">wait</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="socket.html#wait" class="tsd-kind-icon">wait</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="socket.html#fromnetsocket" class="tsd-kind-icon">from<wbr>Net<wbr>Socket</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="socket.html#listenercount-1" class="tsd-kind-icon">listener<wbr>Count</a></li>
 							</ul>
@@ -138,7 +138,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/network/socket.ts#L12">network/socket.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/socket.ts#L14">network/socket.ts:14</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -160,7 +160,7 @@
 					<div class="tsd-signature tsd-kind-icon">client<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">NetSocket</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/network/socket.ts#L12">network/socket.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/socket.ts#L14">network/socket.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -170,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">remote<wbr>Addr<span class="tsd-signature-symbol">:</span> <a href="address.html" class="tsd-signature-type">Address</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/network/socket.ts#L11">network/socket.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/socket.ts#L13">network/socket.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -191,7 +191,7 @@
 					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <a href="logger.html" class="tsd-signature-type">Logger</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/network/socket.ts#L9">network/socket.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/socket.ts#L11">network/socket.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -248,19 +248,19 @@
 					<a name="addpackethandler" class="tsd-anchor"></a>
 					<h3>add<wbr>Packet<wbr>Handler</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Packet<wbr>Handler<span class="tsd-signature-symbol">(</span>handler<span class="tsd-signature-symbol">: </span><a href="../interfaces/packethandler.html" class="tsd-signature-type">PacketHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Packet<wbr>Handler<span class="tsd-signature-symbol">(</span>handler<span class="tsd-signature-symbol">: </span><a href="packethandler.html" class="tsd-signature-type">PacketHandler</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/ipackethandler.html" class="tsd-signature-type">IPacketHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/network/socket.ts#L54">network/socket.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/socket.ts#L56">network/socket.ts:56</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>handler: <a href="../interfaces/packethandler.html" class="tsd-signature-type">PacketHandler</a></h5>
+									<h5>handler: <a href="packethandler.html" class="tsd-signature-type">PacketHandler</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/ipackethandler.html" class="tsd-signature-type">IPacketHandler</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -277,7 +277,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/network/socket.ts#L33">network/socket.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/socket.ts#L35">network/socket.ts:35</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -665,19 +665,19 @@
 					<a name="removepackethandler" class="tsd-anchor"></a>
 					<h3>remove<wbr>Packet<wbr>Handler</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">remove<wbr>Packet<wbr>Handler<span class="tsd-signature-symbol">(</span>handler<span class="tsd-signature-symbol">: </span><a href="../interfaces/packethandler.html" class="tsd-signature-type">PacketHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Packet<wbr>Handler<span class="tsd-signature-symbol">(</span>handler<span class="tsd-signature-symbol">: </span><a href="packethandler.html" class="tsd-signature-type">PacketHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/network/socket.ts#L64">network/socket.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/socket.ts#L65">network/socket.ts:65</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>handler: <a href="../interfaces/packethandler.html" class="tsd-signature-type">PacketHandler</a></h5>
+									<h5>handler: <a href="packethandler.html" class="tsd-signature-type">PacketHandler</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -694,7 +694,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/network/socket.ts#L91">network/socket.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/socket.ts#L88">network/socket.ts:88</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -732,29 +732,23 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="wait" class="tsd-anchor"></a>
 					<h3>wait</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">wait&lt;T&gt;<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/ipacketoptions.html" class="tsd-signature-type">IPacketOptions</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">wait<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">: </span><a href="../globals.html#ipacketfilter" class="tsd-signature-type">IPacketFilter</a><span class="tsd-signature-symbol"> | </span><a href="packetfilter.html" class="tsd-signature-type">PacketFilter</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/network/socket.ts#L74">network/socket.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/socket.ts#L70">network/socket.ts:70</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>options: <a href="../interfaces/ipacketoptions.html" class="tsd-signature-type">IPacketOptions</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>filter: <a href="../globals.html#ipacketfilter" class="tsd-signature-type">IPacketFilter</a><span class="tsd-signature-symbol"> | </span><a href="packetfilter.html" class="tsd-signature-type">PacketFilter</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -771,7 +765,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/network/socket.ts#L108">network/socket.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/socket.ts#L105">network/socket.ts:105</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -844,14 +838,17 @@
 					<li class=" tsd-kind-class">
 						<a href="logger.html" class="tsd-kind-icon">Logger</a>
 					</li>
-					<li class=" tsd-kind-class tsd-is-not-exported">
-						<a href="myservice.html" class="tsd-kind-icon">My<wbr>Service</a>
-					</li>
 					<li class=" tsd-kind-class">
 						<a href="network.html" class="tsd-kind-icon">Network</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="packet.html" class="tsd-kind-icon">Packet</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="packetfilter.html" class="tsd-kind-icon">Packet<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="packethandler.html" class="tsd-kind-icon">Packet<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="remoteservice.html" class="tsd-kind-icon">Remote<wbr>Service</a>
@@ -933,7 +930,7 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 								<a href="socket.html#setmaxlisteners" class="tsd-kind-icon">set<wbr>Max<wbr>Listeners</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="socket.html#wait" class="tsd-kind-icon">wait</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
@@ -949,6 +946,9 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="../interfaces/ipacket.html" class="tsd-kind-icon">IPacket</a>
 					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/ipackethandler.html" class="tsd-kind-icon">IPacket<wbr>Handler</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="../interfaces/ipacketoptions.html" class="tsd-kind-icon">IPacket<wbr>Options</a>
 					</li>
@@ -956,22 +956,16 @@
 						<a href="../interfaces/iservice.html" class="tsd-kind-icon">IService</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/packethandler.html" class="tsd-kind-icon">Packet<wbr>Handler</a>
-					</li>
-					<li class=" tsd-kind-interface">
 						<a href="../interfaces/remoteserviceoptions.html" class="tsd-kind-icon">Remote<wbr>Service<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/serviceconstructor.html" class="tsd-kind-icon">Service<wbr>Constructor</a>
 					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#ipacketfilter" class="tsd-kind-icon">IPacket<wbr>Filter</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-is-not-exported">
 						<a href="../globals.html#logcolor" class="tsd-kind-icon">Log<wbr>Color</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#clientkaptan" class="tsd-kind-icon">client<wbr>Kaptan</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#serverkaptan" class="tsd-kind-icon">server<wbr>Kaptan</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#tohyphenspace" class="tsd-kind-icon">to<wbr>Hyphen<wbr>Space</a>

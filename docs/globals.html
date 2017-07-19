@@ -82,9 +82,10 @@
 								<li class="tsd-kind-class"><a href="classes/iserviceoptions.html" class="tsd-kind-icon">IService<wbr>Options</a></li>
 								<li class="tsd-kind-class"><a href="classes/kaptan.html" class="tsd-kind-icon">Kaptan</a></li>
 								<li class="tsd-kind-class"><a href="classes/logger.html" class="tsd-kind-icon">Logger</a></li>
-								<li class="tsd-kind-class tsd-is-not-exported"><a href="classes/myservice.html" class="tsd-kind-icon">My<wbr>Service</a></li>
 								<li class="tsd-kind-class"><a href="classes/network.html" class="tsd-kind-icon">Network</a></li>
 								<li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/packet.html" class="tsd-kind-icon">Packet</a></li>
+								<li class="tsd-kind-class"><a href="classes/packetfilter.html" class="tsd-kind-icon">Packet<wbr>Filter</a></li>
+								<li class="tsd-kind-class"><a href="classes/packethandler.html" class="tsd-kind-icon">Packet<wbr>Handler</a></li>
 								<li class="tsd-kind-class"><a href="classes/remoteservice.html" class="tsd-kind-icon">Remote<wbr>Service</a></li>
 								<li class="tsd-kind-class"><a href="classes/service.html" class="tsd-kind-icon">Service</a></li>
 								<li class="tsd-kind-class"><a href="classes/servicecontainer.html" class="tsd-kind-icon">Service<wbr>Container</a></li>
@@ -95,24 +96,18 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/ipacket.html" class="tsd-kind-icon">IPacket</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/ipackethandler.html" class="tsd-kind-icon">IPacket<wbr>Handler</a></li>
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/ipacketoptions.html" class="tsd-kind-icon">IPacket<wbr>Options</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/iservice.html" class="tsd-kind-icon">IService</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/packethandler.html" class="tsd-kind-icon">Packet<wbr>Handler</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/remoteserviceoptions.html" class="tsd-kind-icon">Remote<wbr>Service<wbr>Options</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/serviceconstructor.html" class="tsd-kind-icon">Service<wbr>Constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
+						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="globals.html#ipacketfilter" class="tsd-kind-icon">IPacket<wbr>Filter</a></li>
 								<li class="tsd-kind-type-alias tsd-is-not-exported"><a href="globals.html#logcolor" class="tsd-kind-icon">Log<wbr>Color</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Variables</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#clientkaptan" class="tsd-kind-icon">client<wbr>Kaptan</a></li>
-								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#serverkaptan" class="tsd-kind-icon">server<wbr>Kaptan</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -125,38 +120,25 @@
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="ipacketfilter" class="tsd-anchor"></a>
+					<h3>IPacket<wbr>Filter</h3>
+					<div class="tsd-signature tsd-kind-icon">IPacket<wbr>Filter<span class="tsd-signature-symbol">:</span> <a href="interfaces/ipacketoptions.html" class="tsd-signature-type">IPacketOptions</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/network/filter.ts#L79">network/filter.ts:79</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-is-not-exported">
 					<a name="logcolor" class="tsd-anchor"></a>
 					<h3>Log<wbr>Color</h3>
 					<div class="tsd-signature tsd-kind-icon">Log<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"red"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"green"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"yellow"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"blue"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"magenta"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"cyan"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"gray"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/util/logger.ts#L3">util/logger.ts:3</a></li>
-						</ul>
-					</aside>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
-					<a name="clientkaptan" class="tsd-anchor"></a>
-					<h3>client<wbr>Kaptan</h3>
-					<div class="tsd-signature tsd-kind-icon">client<wbr>Kaptan<span class="tsd-signature-symbol">:</span> <a href="classes/kaptan.html" class="tsd-signature-type">Kaptan</a><span class="tsd-signature-symbol"> =&nbsp;new Kaptan(&#x27;client&#x27;)</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in test.ts:14</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
-					<a name="serverkaptan" class="tsd-anchor"></a>
-					<h3>server<wbr>Kaptan</h3>
-					<div class="tsd-signature tsd-kind-icon">server<wbr>Kaptan<span class="tsd-signature-symbol">:</span> <a href="classes/kaptan.html" class="tsd-signature-type">Kaptan</a><span class="tsd-signature-symbol"> =&nbsp;new Kaptan(&#x27;server&#x27;)</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in test.ts:8</li>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/util/logger.ts#L3">util/logger.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -173,7 +155,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/util/texts.ts#L1">util/texts.ts:1</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/util/texts.ts#L1">util/texts.ts:1</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -196,7 +178,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/a92ce33/src/util/security.ts#L1">util/security.ts:1</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/b80ea3b/src/util/security.ts#L1">util/security.ts:1</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -236,14 +218,17 @@
 					<li class=" tsd-kind-class">
 						<a href="classes/logger.html" class="tsd-kind-icon">Logger</a>
 					</li>
-					<li class=" tsd-kind-class tsd-is-not-exported">
-						<a href="classes/myservice.html" class="tsd-kind-icon">My<wbr>Service</a>
-					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/network.html" class="tsd-kind-icon">Network</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/packet.html" class="tsd-kind-icon">Packet</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/packetfilter.html" class="tsd-kind-icon">Packet<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/packethandler.html" class="tsd-kind-icon">Packet<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/remoteservice.html" class="tsd-kind-icon">Remote<wbr>Service</a>
@@ -260,6 +245,9 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/ipacket.html" class="tsd-kind-icon">IPacket</a>
 					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipackethandler.html" class="tsd-kind-icon">IPacket<wbr>Handler</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/ipacketoptions.html" class="tsd-kind-icon">IPacket<wbr>Options</a>
 					</li>
@@ -267,22 +255,16 @@
 						<a href="interfaces/iservice.html" class="tsd-kind-icon">IService</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/packethandler.html" class="tsd-kind-icon">Packet<wbr>Handler</a>
-					</li>
-					<li class=" tsd-kind-interface">
 						<a href="interfaces/remoteserviceoptions.html" class="tsd-kind-icon">Remote<wbr>Service<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/serviceconstructor.html" class="tsd-kind-icon">Service<wbr>Constructor</a>
 					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#ipacketfilter" class="tsd-kind-icon">IPacket<wbr>Filter</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-is-not-exported">
 						<a href="globals.html#logcolor" class="tsd-kind-icon">Log<wbr>Color</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#clientkaptan" class="tsd-kind-icon">client<wbr>Kaptan</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#serverkaptan" class="tsd-kind-icon">server<wbr>Kaptan</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#tohyphenspace" class="tsd-kind-icon">to<wbr>Hyphen<wbr>Space</a>
