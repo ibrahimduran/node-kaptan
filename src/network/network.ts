@@ -15,7 +15,6 @@ export class Network extends Service {
   protected serverLogger: Logger;
 
   constructor(kaptan: Kaptan, options = {}) {
-    console.log('Network Options: ', options);
     super(kaptan, {
       PORT: process.env.PORT || 3333,
       ...options
@@ -54,7 +53,7 @@ export class Network extends Service {
     socket.on('connection', () => this.clientLogger.text(`connected to ${socket.remoteAddr.endpoint}`));
     socket.on('disconnect', () => this.clientLogger.text(`disconnected from ${socket.remoteAddr.endpoint}`));
 
-    socket.on('packet', () => {
+    socket.on('packet', (sock) => {
       this.clientLogger.text(`incoming packet from ${sock.remoteAddr.endpoint}`);
     });
 
@@ -74,18 +73,18 @@ export class Network extends Service {
 
     this.serverLogger.text(`incoming connection from ${socket.remoteAddr.endpoint}`);
     
-    socket.on('connection', () => this.serverLogger.text(`connected to ${socket.remoteAddr.endpoint}`));
-    socket.on('disconnect', () => this.serverLogger.text(`disconnected from ${socket.remoteAddr.endpoint}`));
+    socket.on('disconnect', () => {
+      this.serverLogger.text(`disconnected from ${socket.remoteAddr.endpoint}`);
+      this.emit('disconnect', socket);
+    });
 
-    socket.on('packet', (packet: Packet) => {
-      this.serverLogger.text(`incoming packet from ${socket.remoteAddr.endpoint}`);
+    socket.on('packet', (sock, packet) => {
+      this.serverLogger.text(`incoming packet from ${sock.remoteAddr.endpoint}`);
+      this.emit('packet', sock, packet);
     });
 
     socket.on('send', (packet: Packet) => {
       this.serverLogger.text(`sending packet to ${socket.remoteAddr.endpoint}`);
     });
-
-    socket.on('disconnect', () => this.emit('disconnect', socket));
-    socket.on('connection', () => this.emit('connection', socket));
   }
 }
