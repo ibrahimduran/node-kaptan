@@ -4,7 +4,7 @@ import {
   Socket as NetSocket
 } from 'net';
 
-import { Socket, Packet, PacketHandler, Address } from './';
+import { Socket, Packet, PacketHandler, IPacketHandler, Address } from './';
 import { Kaptan } from '../kaptan';
 import { Service } from '../service';
 import { Logger } from '../util';
@@ -31,7 +31,11 @@ export class Network extends Service {
     this.server.on('connection', this.onConnection.bind(this));
   }
 
-  public addPacketHandler(handler: PacketHandler) {
+  public addPacketHandler(handler: PacketHandler | IPacketHandler) {
+    if (!(handler instanceof PacketHandler)) {
+      handler = new PacketHandler(handler);
+    }
+
     this.on('socket', (socket: Socket) => {
       socket.addPacketHandler(handler);
     });
@@ -40,7 +44,7 @@ export class Network extends Service {
   }
 
   public removePacketHandler(handler: PacketHandler) {
-    throw new Error('Not implemented');
+    this.emit('removeHandler', handler);
   }
 
   // Outgoing connection - client
@@ -50,8 +54,8 @@ export class Network extends Service {
     socket.on('connection', () => this.clientLogger.text(`connected to ${socket.remoteAddr.endpoint}`));
     socket.on('disconnect', () => this.clientLogger.text(`disconnected from ${socket.remoteAddr.endpoint}`));
 
-    socket.on('packet', (packet: Packet) => {
-      this.clientLogger.text(`incoming packet from ${socket.remoteAddr.endpoint}`);
+    socket.on('packet', () => {
+      this.clientLogger.text(`incoming packet from ${sock.remoteAddr.endpoint}`);
     });
 
     socket.on('send', (packet: Packet) => {
@@ -66,6 +70,7 @@ export class Network extends Service {
     const socket = Socket.fromNetSocket(netSock);
     this.emit('socket', socket);
     this.on('addHandler', handler => socket.addPacketHandler(handler));
+    this.on('removeHandler', handler => socket.removePacketHandler(handler));
 
     this.serverLogger.text(`incoming connection from ${socket.remoteAddr.endpoint}`);
     
@@ -82,6 +87,5 @@ export class Network extends Service {
 
     socket.on('disconnect', () => this.emit('disconnect', socket));
     socket.on('connection', () => this.emit('connection', socket));
-    socket.on('packet', (packet) => this.emit('packet', socket, packet));
   }
 }

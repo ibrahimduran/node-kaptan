@@ -3,7 +3,9 @@ import { EventEmitter } from 'events';
 
 import { Logger } from '../util';
 import { Address } from './address';
-import { Packet, PacketProtocol, IPacketOptions, PacketHandler } from './packet';
+import { Packet, PacketProtocol, IPacketOptions } from './packet';
+import { IPacketFilter, PacketFilter } from './filter';
+import { PacketHandler, IPacketHandler } from './handler';
 
 export class Socket extends EventEmitter {
   protected static logger: Logger;
@@ -40,8 +42,8 @@ export class Socket extends EventEmitter {
         line += chr;
 
         if (/[\n\r]$/.test(chr)) {
-          this.emit('line', line);
-          this.emit('packet', Packet.fromString(line));
+          this.emit('line', this, line);
+          this.emit('packet', this, Packet.fromString(line));
           line = '';
         }
       }
@@ -51,40 +53,35 @@ export class Socket extends EventEmitter {
     netSock.on('end', () => this.emit('disconnect'));
   }
 
-  public addPacketHandler(handler: PacketHandler) {
-    if (handler.onParsed) {
-      this.addListener('packet', handler.onParsed);
+  public addPacketHandler(handler: PacketHandler | IPacketHandler) {
+    if (!(handler instanceof PacketHandler)) {
+      handler = new PacketHandler(handler);
     }
 
-    if (handler.onReceive) {
-      this.addListener('line', handler.onReceive);
-    }
+    this.addListener('packet', (handler as PacketHandler).getOnParsedListener());
+    this.addListener('line', (handler as PacketHandler).getOnReceiveListener());
   }
 
   public removePacketHandler(handler: PacketHandler) {
-    if (handler.onParsed) {
-      this.removeListener('packet', handler.onParsed);
-    }
-
-    if (handler.onReceive) {
-      this.removeListener('line', handler.onReceive);
-    }
+    this.removeListener('packet', handler.getOnParsedListener());
+    this.removeListener('line', handler.getOnReceiveListener());
   }
 
-  public async wait<T = {}>(options: IPacketOptions<T>) {
+  public async wait(filter: IPacketFilter | PacketFilter) {
+    if (!(filter instanceof PacketFilter)) {
+      filter = PacketFilter.from(filter);
+    }
+
     return new Promise((resolve, reject) => {
-      var listener = (packet: Packet) => {
-        for (var key in options) {
-          if ((options as any)[key] !== (packet as any)[key]) {
-            return;
-          }
+      const handler = new PacketHandler({
+        filter,
+        onParsed: (socket, packet) => {
+          resolve(packet);
+          this.removePacketHandler(handler);
         }
+      });
 
-        this.client.removeListener('packet', listener);
-        resolve(packet);
-      }
-
-      this.on('packet', listener.bind(this));
+      this.addPacketHandler(handler);
     });
   }
 
@@ -99,7 +96,7 @@ export class Socket extends EventEmitter {
     this.client.write(String(packet.toString() + '\n'));
 
     if (packet.protocol === PacketProtocol.REQUEST) {
-      return await this.wait((packet as Packet).resMeta);
+      return await this.wait((packet as Packet).resFilter);
     }
 
     return null;

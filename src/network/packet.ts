@@ -1,5 +1,5 @@
 import { uid } from '../util/security';
-import { Socket } from './socket';
+import { PacketFilter } from './filter';
 
 export class Packet<T = any> implements IPacket<T> {
   public id: string;
@@ -7,6 +7,10 @@ export class Packet<T = any> implements IPacket<T> {
   public ref?: string;
   public data?: T;
 
+  public get resFilter() {
+    return new PacketFilter().ref(this.id).protocol(PacketProtocol.RESPONSE);
+  }
+  
   public get resMeta() {
     return {
       ref: this.id,
@@ -46,7 +50,7 @@ export interface IPacket<T = any> {
   data?: T;
 }
 
-export interface IPacketOptions<T> {
+export interface IPacketOptions<T = any> {
   id?: string;
   protocol?: PacketProtocol;
   ref?: string;
@@ -57,9 +61,4 @@ export enum PacketProtocol {
   RAW,
   REQUEST,
   RESPONSE
-}
-
-export interface PacketHandler {
-  onReceive? (this: Socket, data: string): any;
-  onParsed? (this: Socket, packet: Packet): any;
 }

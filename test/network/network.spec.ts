@@ -32,7 +32,7 @@ describe('Network/Network', function () {
 
     const packet = Network.Packet.raw('Hello, can you mirror this packet to me?');
     socket.send(packet);
-    socket.once('packet', (pkt: Network.Packet) => {
+    socket.once('packet', (sock: Network.Socket, pkt: Network.Packet) => {
       assert.equal(pkt.toString(), packet.toString());
       done();
     });
@@ -44,37 +44,36 @@ describe('Network/Network', function () {
   it('should add packet handler', function (done) {
     var complete = () => { complete = done; };
 
-    myPacketHandler = {
-      onReceive(raw: string) {
+    myPacketHandler = new Network.PacketHandler({
+      onReceive(socekt: Network.Socket, raw: string) {
         myPacketHandlerData.push(raw);
         assert.notEqual(raw.indexOf('Foo Bar'), -1);
         complete();
       },
-      onParsed(packet: Network.Packet) {
+      onParsed(socket: Network.Socket, packet: Network.Packet) {
         myPacketHandlerData.push(packet);
         assert.equal(packet.data, 'Foo Bar');
         complete();
       }
-    } as Network.PacketHandler;
+    });
 
     network.addPacketHandler(myPacketHandler);
 
     socket.send('Foo Bar');
   });
 
-  // not implemented yet
-  // it('should remove packet handler', function (done) {
-  //   myPacketHandlerData = [];
+  it('should remove packet handler', function (done) {
+    myPacketHandlerData = [];
     
-  //   network.removePacketHandler(myPacketHandler);
-  //   socket.send('Foo Bar');
+    network.removePacketHandler(myPacketHandler);
+    socket.send('Foo Bar');
 
-  //   setTimeout(() => {
-  //     if (myPacketHandlerData.length > 0) {
-  //       throw new Error('packet handler data exists: ' + myPacketHandlerData);
-  //     }
+    setTimeout(() => {
+      if (myPacketHandlerData.length > 0) {
+        throw new Error('packet handler data exists: ' + myPacketHandlerData);
+      }
 
-  //     done();
-  //   }, 1000);
-  // });
+      done();
+    }, 1000);
+  });
 });

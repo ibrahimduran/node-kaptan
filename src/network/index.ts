@@ -4,3 +4,4 @@ export * from './socket';
 export * from './packet';
 export * from './remote';
 export * from './filter';
+export * from './handler';

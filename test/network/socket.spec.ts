@@ -54,7 +54,7 @@ describe('Network/Socket', function () {
   it('should send and receive packet', function (done) {
     const packet = Network.Packet.raw('hello from socket');
     socket.send(packet);
-    socket.once('packet', (p) => {
+    socket.once('packet', (sock, p) => {
       assert.equal(p.toString(), packet.toString());
       done();
     });
@@ -82,18 +82,18 @@ describe('Network/Socket', function () {
   it('should add packet handler', function (done) {
     var complete = () => { complete = done; };
 
-    myPacketHandler = {
-      onReceive(raw: string) {
+    myPacketHandler = new Network.PacketHandler({
+      onReceive(sock: Network.Socket, raw: string) {
         myPacketHandlerData.push(raw);
         assert.notEqual(raw.indexOf('Foo Bar'), -1);
         complete();
       },
-      onParsed(packet: Network.Packet) {
+      onParsed(sock: Network.Socket, packet: Network.Packet) {
         myPacketHandlerData.push(packet);
         assert.equal(packet.data, 'Foo Bar');
         complete();
       }
-    } as Network.PacketHandler;
+    });
 
     socket.addPacketHandler(myPacketHandler);
 

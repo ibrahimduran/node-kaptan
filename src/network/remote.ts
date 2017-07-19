@@ -1,6 +1,6 @@
 import { Kaptan } from '../kaptan';
 import { Service, ServiceContainer } from '../service';
-import { Network, Packet, Address, Socket, PacketProtocol } from '../network';
+import { Network, Packet, Address, Socket, PacketFilter, PacketProtocol } from '../network';
 import { Logger } from '../util';
 
 export class RemoteService extends Service {
@@ -36,38 +36,38 @@ export class RemoteService extends Service {
   private initServer(services: ServiceContainer) {
     this.logger.text('initializing remote service');
     const self = this;
+
     this.network.addPacketHandler({
-      onParsed(packet: Packet) {
-        if (packet.protocol === PacketProtocol.REQUEST && packet.ref === 'RemoteService#init') {
-          self.logger.text('incoming remote service request');
-          const res = packet.resMeta;
+      filter: new PacketFilter()
+        .ref('RemoteService#init')
+        .protocol(PacketProtocol.REQUEST)
+        .require('name'),
+      
+      onParsed(socket: Socket, packet: Packet) {
+        self.logger.text('incoming remote service request');
+        const res = packet.resMeta;
 
-          try {
-            if (!packet.data || !packet.data.name) {
-              throw new Error('Service name is required!');
-            }
-            
-            const service = services.spawn(packet.data.name) as RemoteService;
-            res.data = service.getServiceState();
+        try {
+          const service = services.spawn(packet.data.name) as RemoteService;
+          res.data = service.getServiceState();
 
-            self.on('update', (state) => {
-              this.send(new Packet({
-                ref: 'RemoteService#update',
-                data: {
-                  service: Service.getServiceName(self),
-                  state
-                }
-              }));
-            });
-          } catch (err) {
-            res.data = {
-              error: err.toString()
-            };
-          }
-
-          self.logger.text('sending remote service response');
-          this.send(res);
+          self.on('update', (state) => {
+            socket.send(new Packet({
+              ref: 'RemoteService#update',
+              data: {
+                service: Service.getServiceName(self),
+                state
+              }
+            }));
+          });
+        } catch (err) {
+          res.data = {
+            error: err.toString()
+          };
         }
+
+        self.logger.text('sending remote service response');
+        socket.send(res);
       }
     });
   }
@@ -89,12 +89,15 @@ export class RemoteService extends Service {
       const self = this;
 
       this.remote.addPacketHandler({
-        onParsed(packet: Packet) {
-          if (packet.ref === 'RemoteService#update' && packet.data && packet.data.service === self.remoteName) {
-            self.setState(packet.data.state);
-          }
+        filter: new PacketFilter()
+          .ref('RemoteService#update')
+          .require('service', 'state'),
+
+        onParsed(socket: Socket, packet: Packet) {
+          self.setState(packet.data.state);
         }
-      })
+      });
+      
       this.emit('init');
       this.clientLogger.text('connection established');
     }
