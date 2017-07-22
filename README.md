@@ -95,6 +95,8 @@ You can use `kaptan.services.spawn` method to access service instances.
 ## Network
 > Kaptan framework comes with a built-in Network service to simplify networking. All features of network service is async/await - promise compatible. It currently supports three protocols for sending packets; _Request_/_Response_ for sending request and receiving response synchronously (using promises) and _Raw_ for sending data without waiting for response. 
 
+Informations below are just a brief description for understanding the concept. Don't forget to check documentation to get more information about classes or methods.
+
 ### Using the service
 Kaptan package exports _Network_ namespace which contains _Network_ service. So you'll need to add `Network.Network` as service.
 
@@ -103,6 +105,38 @@ import { Network } from 'kaptan';
 
 kaptan.use(Network.Network, { PORT: 5000 });
 ```
+
+
+
+### Packets, packet handlers and packet filters
+`Network.Packet` is basically a data holder class with serialization logic in it. `Network.PacketHandler` instances can be passed to sockets and network service itself. By default, every one of packet handlers run when a packet arrives to the local socket but you can add filters to the handler using the `Network.PacketFilter` class.
+
+Also you can use literal objects to create `PacketHandler` and `PacketFilter` instances in order simplify usage.
+
+```js
+const filter = Network.PacketFilter.from({ ref: 'myPacket' });
+
+const handler = new Network.PacketHandler({
+    filter: filter,
+    onParsed(socket, packet) {
+    }
+    
+    onReceive(socket, raw) {
+    }
+});
+```
+
+### Sockets
+`Network.Socket` is wrapper for [_net_](https://nodejs.org/api/net.html)'s socket object. You can pass packet handlers to sockets as mentioned above. There are two main methods in socket; `wait(filter)` and `send(packet)`. Since `wait` method returns a promise, you can create synchronized communications between server and client with power of async/await syntax of ES2017.
+
+```js
+const filter = new Network.PacketFilter()
+    .require('message');
+    
+const response = await socket.wait(filter);
+socket.send({ data: { message: response.data.message } }); // mirror message
+```
+
 <br>
 More about network will be available here soon..
 
