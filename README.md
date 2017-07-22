@@ -13,7 +13,7 @@
 - [Network](#network)
     - [Using the service](#using-the-service)
     - [Packets, handlers and filters](#packets-packet-handlers-and-packet-filters)
-    - [Sockets and adresses](#sockets-and-adresses)
+    - [Sockets and addresses](#sockets-and-addresses)
 - [License](#license)
 
 ## Available Services
