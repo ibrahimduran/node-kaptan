@@ -12,6 +12,8 @@
     - [Developing services](#developing-services)
 - [Network](#network)
     - [Using the service](#using-the-service)
+    - [Packets, handlers and filters](#packets-packet-handlers-and-packet-filters)
+    - [Sockets and adresses](#sockets-and-adresses)
 - [License](#license)
 
 ## Available Services
@@ -106,8 +108,6 @@ import { Network } from 'kaptan';
 kaptan.use(Network.Network, { PORT: 5000 });
 ```
 
-
-
 ### Packets, packet handlers and packet filters
 `Network.Packet` is basically a data holder class with serialization logic in it. `Network.PacketHandler` instances can be passed to sockets and network service itself. By default, every one of packet handlers run when a packet arrives to the local socket but you can add filters to the handler using the `Network.PacketFilter` class.
 
@@ -126,8 +126,8 @@ const handler = new Network.PacketHandler({
 });
 ```
 
-### Sockets
-`Network.Socket` is wrapper for [_net_](https://nodejs.org/api/net.html)'s socket object. You can pass packet handlers to sockets as mentioned above. There are two main methods in socket; `wait(filter)` and `send(packet)`. Since `wait` method returns a promise, you can create synchronized communications between server and client with power of async/await syntax of ES2017.
+### Sockets and addresses
+`Network.Address` is a common class that contains IP address utilities. `Network.Socket` is a wrapper for [_net_](https://nodejs.org/api/net.html)'s socket object. You can pass packet handlers to sockets as mentioned above. There are two main methods in socket; `wait(filter)` and `send(packet)`. Since `wait` method returns a promise, you can create synchronized communications between server and client with power of async/await syntax of ES2017.
 
 ```js
 const filter = new Network.PacketFilter()
