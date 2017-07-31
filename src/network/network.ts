@@ -84,6 +84,7 @@ export class Network extends Service {
     });
 
     socket.on('send', (packet: Packet) => {
+      this.emit('send', socket, packet);
       this.serverLogger.text(`sending packet to ${socket.remoteAddr.endpoint}`);
     });
   }
