@@ -41,15 +41,14 @@ export class RemoteService extends Service {
       filter: new PacketFilter()
         .ref('RemoteService#init')
         .protocol(PacketProtocol.REQUEST)
-        .require('name'),
+        .data({ name: Service.getServiceName(self) }),
       
       onParsed(socket: Socket, packet: Packet) {
         self.logger.text('incoming remote service request');
         const res = packet.resMeta;
 
         try {
-          const service = services.spawn(packet.data.name) as RemoteService;
-          res.data = service.getServiceState();
+          res.data = self.getServiceState();
 
           self.on('update', (state) => {
             socket.send(new Packet({
