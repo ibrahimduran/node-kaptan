@@ -90,7 +90,8 @@ export class RemoteService extends Service {
       this.remote.addPacketHandler({
         filter: new PacketFilter()
           .ref('RemoteService#update')
-          .require('service', 'state'),
+          .data({ service: this.remoteName })
+          .require('state'),
 
         onParsed(socket: Socket, packet: Packet) {
           self.setState(packet.data.state);
