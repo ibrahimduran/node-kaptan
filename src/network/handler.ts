@@ -50,7 +50,7 @@ export class PacketHandler {
     if (!this.onParsedListener) {
       this.onParsedListener = (socket: Socket, packet: Packet) => {
         if (this.filters.every(filter => filter.test(packet))) {
-          Events.runIntercepted(this.onParsedCallbacks, socket, packet);
+          Events.runIntercepted([...this.onParsedCallbacks], socket, packet);
         }
       };
     }
@@ -61,7 +61,7 @@ export class PacketHandler {
   public getOnReceiveListener() {
     if (!this.onReceiveListener) {
       this.onReceiveListener = (socket: Socket, data: string) => {
-        Events.runIntercepted(this.onReceiveCallbacks, socket, data);
+        Events.runIntercepted([...this.onReceiveCallbacks], socket, data);
       };
     }
 
