@@ -1,6 +1,6 @@
 {
   "name": "kaptan",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "All in one micro-service framework",
   "main": "build/index.js",
   "types": "build/index.d.ts",
