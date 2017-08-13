@@ -21,7 +21,7 @@ export class Service extends Events {
   }
 
   public static copy(name: string, service: ServiceConstructor): ServiceConstructor {
-    const newService = eval(`class ${name} extends service {}`);
+    const newService = eval(`class ${name} extends service {}; ${name}`);
 
     return newService;
   }
