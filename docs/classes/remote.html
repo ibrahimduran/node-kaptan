@@ -84,12 +84,13 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="remote.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-private-protected">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="remote.html#logger" class="tsd-kind-icon">logger</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="remote.html#service" class="tsd-kind-icon">service</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="remote.html#socket" class="tsd-kind-icon">socket</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="remote.html#socket" class="tsd-kind-icon">socket</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="remote.html#defaultlogger" class="tsd-kind-icon">default<wbr>Logger</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -110,25 +111,25 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Remote<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="remoteservice.html" class="tsd-signature-type">RemoteService</a>, socket<span class="tsd-signature-symbol">: </span><a href="socket.html" class="tsd-signature-type">Socket</a>, logger<span class="tsd-signature-symbol">: </span><a href="logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="remote.html" class="tsd-signature-type">Remote</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Remote<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="remoteservice.html" class="tsd-signature-type">RemoteService</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, remote<span class="tsd-signature-symbol">: </span><a href="socket.html" class="tsd-signature-type">Socket</a><span class="tsd-signature-symbol"> | </span><a href="address.html" class="tsd-signature-type">Address</a>, logger<span class="tsd-signature-symbol">?: </span><a href="logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="remote.html" class="tsd-signature-type">Remote</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/89ab0e1/src/network/remote/remote.ts#L11">network/remote/remote.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/698f34b/src/network/remote/remote.ts#L15">network/remote/remote.ts:15</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>service: <a href="remoteservice.html" class="tsd-signature-type">RemoteService</a></h5>
+									<h5>service: <a href="remoteservice.html" class="tsd-signature-type">RemoteService</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5>socket: <a href="socket.html" class="tsd-signature-type">Socket</a></h5>
+									<h5>remote: <a href="socket.html" class="tsd-signature-type">Socket</a><span class="tsd-signature-symbol"> | </span><a href="address.html" class="tsd-signature-type">Address</a></h5>
 								</li>
 								<li>
-									<h5>logger: <a href="logger.html" class="tsd-signature-type">Logger</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> logger: <a href="logger.html" class="tsd-signature-type">Logger</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="remote.html" class="tsd-signature-type">Remote</a></h4>
@@ -136,7 +137,7 @@
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="logger" class="tsd-anchor"></a>
@@ -144,27 +145,37 @@
 					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <a href="logger.html" class="tsd-signature-type">Logger</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/89ab0e1/src/network/remote/remote.ts#L11">network/remote/remote.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/698f34b/src/network/remote/remote.ts#L13">network/remote/remote.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="service" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> service</h3>
-					<div class="tsd-signature tsd-kind-icon">service<span class="tsd-signature-symbol">:</span> <a href="remoteservice.html" class="tsd-signature-type">RemoteService</a></div>
+					<div class="tsd-signature tsd-kind-icon">service<span class="tsd-signature-symbol">:</span> <a href="remoteservice.html" class="tsd-signature-type">RemoteService</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/89ab0e1/src/network/remote/remote.ts#L9">network/remote/remote.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/698f34b/src/network/remote/remote.ts#L12">network/remote/remote.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="socket" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> socket</h3>
+					<h3>socket</h3>
 					<div class="tsd-signature tsd-kind-icon">socket<span class="tsd-signature-symbol">:</span> <a href="socket.html" class="tsd-signature-type">Socket</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/89ab0e1/src/network/remote/remote.ts#L10">network/remote/remote.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/698f34b/src/network/remote/remote.ts#L15">network/remote/remote.ts:15</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="defaultlogger" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> default<wbr>Logger</h3>
+					<div class="tsd-signature tsd-kind-icon">default<wbr>Logger<span class="tsd-signature-symbol">:</span> <a href="logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> =&nbsp;new Logger(&#x27;remote-object&#x27;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/698f34b/src/network/remote/remote.ts#L10">network/remote/remote.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -181,7 +192,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/89ab0e1/src/network/remote/remote.ts#L94">network/remote/remote.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/698f34b/src/network/remote/remote.ts#L111">network/remote/remote.ts:111</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -207,7 +218,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/89ab0e1/src/network/remote/remote.ts#L89">network/remote/remote.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/698f34b/src/network/remote/remote.ts#L102">network/remote/remote.ts:102</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -233,7 +244,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/89ab0e1/src/network/remote/remote.ts#L62">network/remote/remote.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/698f34b/src/network/remote/remote.ts#L69">network/remote/remote.ts:69</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -250,7 +261,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/89ab0e1/src/network/remote/remote.ts#L43">network/remote/remote.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/ibrahimduran/node-kaptan/blob/698f34b/src/network/remote/remote.ts#L50">network/remote/remote.ts:50</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -325,8 +336,11 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 								<a href="remote.html#service" class="tsd-kind-icon">service</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="remote.html#socket" class="tsd-kind-icon">socket</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+								<a href="remote.html#defaultlogger" class="tsd-kind-icon">default<wbr>Logger</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="remote.html#onremoterun" class="tsd-kind-icon">on<wbr>Remote<wbr>Run</a>
