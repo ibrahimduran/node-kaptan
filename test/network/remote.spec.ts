@@ -3,7 +3,7 @@ import 'mocha';
 import * as getPort from 'get-port';
 import { assert } from 'chai';
 import { Kaptan } from '../../build/kaptan';
-import { Network, Address, RemoteService, IRemoteServiceOpts } from '../../build/network';
+import { Network, Address, RemoteService, Remote, IRemoteServiceOpts } from '../../build/network';
 
 describe('Network/RemoteService', async function () {
   const serverKaptan = new Kaptan('server');
@@ -40,6 +40,16 @@ describe('Network/RemoteService', async function () {
     serverKaptan.use(MyService);
     serverKaptan.start();
     serverService = serverKaptan.services.spawn('MyService') as MyService;
+  });
+
+  it('should Remote object work as standalone', async function () {
+    const remote = new Remote('MyService', new Address('127.0.0.1', SERVER_PORT));
+    remote.register();
+
+    assert.equal(
+      await remote.run('greet', ['John Doe']),
+      await serverService.greet('John Doe')
+    );
   });
 
   it('should create remote service as client', function () {
