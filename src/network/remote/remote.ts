@@ -3,7 +3,7 @@ import { RemoteService } from './service';
 import { PacketFilter } from '../filter';
 import { Packet, PacketProtocol } from '../packet';
 import { Socket } from '../socket';
-import { Address } from '../Address';
+import { Address } from '../address';
 import { Logger } from '../../util/logger';
 
 export class Remote {
