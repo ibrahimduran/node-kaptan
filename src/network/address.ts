@@ -32,6 +32,10 @@ export class Address {
   }
 
   public static fromNetSock(netSock: NetSocket) {
+    if (netSock.remoteAddress === undefined || netSock.remotePort === undefined) {
+      throw new Error('Given socket is not connected to remote.');
+    }
+
     return new Address(netSock.remoteAddress, netSock.remotePort);
   }
 }
