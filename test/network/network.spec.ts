@@ -20,6 +20,10 @@ describe('Network/Network', function () {
     network = kaptan.services.spawn('Network') as Network.Network;
   });
 
+  it('should start the network service', function () {
+    network.start();
+  });
+
   it('should connect to another network', function (done) {
     socket = network.connect('127.0.0.1', PORT);
     socket.client.on('connect', () => done());

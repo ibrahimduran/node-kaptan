@@ -70,6 +70,24 @@ export class ServiceContainer {
       });
     }
   }
+
+  public start() {
+    const promises = Array.from(this.instances.values()).map(async service => {
+      await service.start();
+      service.emit('start');
+    });
+
+    return Promise.all(promises);
+  }
+
+  public stop() {
+    const promises = Array.from(this.instances.values()).map(async service => {
+      await service.stop();
+      service.emit('stop');
+    });
+
+    return Promise.all(promises);
+  }
 }
 
 export class IServiceOptions {

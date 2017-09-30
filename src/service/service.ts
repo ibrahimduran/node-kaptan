@@ -3,7 +3,7 @@ import { Kaptan } from '../kaptan';
 import { Logger, Events } from '../util';
 import { toHyphenSpace } from '../util/texts';
 
-export class Service extends Events {
+export class Service extends Events implements IService {
   protected options: {[key: string]: any} = {};
   protected kaptan: Kaptan;
   protected logger: Logger;
@@ -18,6 +18,14 @@ export class Service extends Events {
     );
 
     this.logger.text('created');
+  }
+
+  public async start() {
+    this.logger.text('started');
+  }
+
+  public async stop() {
+    this.logger.text('stopped');
   }
 
   public static copy(name: string, service: ServiceConstructor): ServiceConstructor {
@@ -57,4 +65,6 @@ export interface ServiceConstructor {
 }
 
 export interface IService {
+  start(): Promise<void>;
+  stop(): Promise<void>;
 }

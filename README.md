@@ -67,7 +67,9 @@ kaptan.use(CustomService, { XYZ: false });
 ### Starting application
 This will fire up application and create service instances.
 ```js
-kaptan.start();
+kaptan.start()
+  .then(() => console.log('Application started!'))
+  .catch(err => console.error(err));
 ```
 
 ### Developing Services
@@ -89,6 +91,12 @@ class MyService extends Service {
 
     // service dependencies/injections
     const fooBar = kaptan.services.spawn('FooBar');
+  }
+
+  async start() {
+  }
+
+  async stop() {
   }
 }
 ```

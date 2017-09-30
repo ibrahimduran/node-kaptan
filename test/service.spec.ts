@@ -21,7 +21,12 @@ describe('Service', function () {
   });
 
   it('should create service', function () {
-    HelloService = Service.create('HelloService', {});
+    HelloService = Service.create('HelloService', {
+      async start() {
+      },
+      async stop() {
+      }
+    });
   });
 
   it('should create container', function () {

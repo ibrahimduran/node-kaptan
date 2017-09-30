@@ -18,7 +18,12 @@ export class Kaptan extends EventEmitter {
     this.services.add(service, options);
   }
 
-  public start() {
+  public async start() {
     this.services.spawn();
+    await this.services.start();
+  }
+
+  public async stop() {
+    await this.services.stop();
   }
 }

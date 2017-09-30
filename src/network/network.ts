@@ -24,10 +24,24 @@ export class Network extends Service {
     this.serverLogger = this.logger.namespace('server');
     
     this.server = createServer()
-      .on('listening', () => this.logger.text('listening on ' + this.server.address().port))
-      .listen(this.options.PORT);
+      .on('listening', () => this.logger.text('listening on ' + this.server.address().port));
     
     this.server.on('connection', this.onConnection.bind(this));
+  }
+
+
+  public async start() {
+    super.start();
+
+    this.server.listen(this.options.PORT);
+  }
+
+  public stop() {
+    super.stop();
+
+    return new Promise<void>((resolve, reject) => {
+      this.server.close(() => resolve());
+    });
   }
 
   public addPacketHandler(handler: PacketHandler | IPacketHandler) {
