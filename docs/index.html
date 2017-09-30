@@ -141,7 +141,9 @@ kaptan.use(CustomService, { <span class="hljs-attr">XYZ</span>: <span class="hlj
 </code></pre>
 				<h3 id="starting-application">Starting application</h3>
 				<p>This will fire up application and create service instances.</p>
-				<pre><code class="lang-js">kaptan.start();
+				<pre><code class="lang-js">kaptan.start()
+  .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Application started!'</span>))
+  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
 </code></pre>
 				<h3 id="developing-services">Developing Services</h3>
 				<p>Services are created by extending Service class. <em>Service</em> constructor takes <em>kaptan</em> intance as first parameter and options object as second. Also <code>kaptan</code>, <code>logger</code> and <code>options</code> properties get set in extended <em>Service</em> constructor.</p>
@@ -161,6 +163,12 @@ kaptan.use(CustomService, { <span class="hljs-attr">XYZ</span>: <span class="hlj
 
     <span class="hljs-comment">// service dependencies/injections</span>
     <span class="hljs-keyword">const</span> fooBar = kaptan.services.spawn(<span class="hljs-string">'FooBar'</span>);
+  }
+
+  <span class="hljs-keyword">async</span> start() {
+  }
+
+  <span class="hljs-keyword">async</span> stop() {
   }
 }
 </code></pre>
