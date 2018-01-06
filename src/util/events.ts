@@ -18,7 +18,7 @@ export class Events extends EventEmitter {
 
   public async emitIntercepted(event: string | symbol, ...args: any[]) {
     const events = this.listeners(event) as Function[];
-    events.forEach((e: (...args: any[]) => void) => {
+    events.forEach((e: any) => {
       const index = this.oneTimeInterceptedEvents.indexOf(e);
       if (index !== -1) {
         this.oneTimeInterceptedEvents.splice(index, 1);

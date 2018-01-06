@@ -71,8 +71,12 @@ describe('Network/Socket', function () {
 
   it('should send request and wait for response', function () {
     socket.send({ protocol: Network.PacketProtocol.REQUEST, data: 'hello rpc' })
-      .then((res: Network.Packet) => {
-        assert.equal(res.data, 'hello rpc');
+      .then((res: Network.Packet | null) => {
+        if (res != null) {
+          assert.equal(res.data, 'hello rpc');
+        } else {
+          throw new Error('socket.send with REQUEST protocol didn\'t return response object');
+        }
       });
   });
 

@@ -9,7 +9,7 @@
     "test": "nyc mocha",
     "build": "tsc",
     "watch": "tsc --watch",
-    "typedoc": "typedoc --out docs --mode file",
+    "typedoc": "typedoc --mode file --out docs ./src",
     "codecov": "nyc report --reporter=json && codecov -f coverage/*.json"
   },
   "files": [
@@ -50,18 +50,18 @@
   },
   "homepage": "https://github.com/ibrahimduran/node-kaptan#readme",
   "devDependencies": {
-    "@types/chai": "^4.0.4",
+    "@types/chai": "^4.1.0",
     "@types/get-port": "0.0.4",
-    "@types/mocha": "^2.2.43",
+    "@types/mocha": "^2.2.46",
     "chai": "^4.1.2",
-    "codecov": "^2.3.0",
+    "codecov": "^2.3.1",
     "get-port": "^3.2.0",
     "mocha": "^3.5.3",
-    "nyc": "^11.2.1",
+    "nyc": "^11.4.1",
     "source-map-support": "^0.4.18",
     "ts-node": "^3.3.0",
-    "typedoc": "^0.7.2",
-    "typescript": "^2.5.3"
+    "typedoc": "^0.9.0",
+    "typescript": "^2.6.2"
   },
   "dependencies": {
     "@types/colors": "^1.1.3",

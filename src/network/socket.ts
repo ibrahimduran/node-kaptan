@@ -67,7 +67,7 @@ export class Socket extends EventEmitter {
     this.removeListener('line', handler.getOnReceiveListener());
   }
 
-  public async wait(filter: IPacketFilter | PacketFilter) {
+  public wait(filter: IPacketFilter | PacketFilter): Promise<Packet<any>> {
     if (!(filter instanceof PacketFilter)) {
       filter = PacketFilter.from(filter);
     }
@@ -85,7 +85,7 @@ export class Socket extends EventEmitter {
     });
   }
 
-  public async send(packet: Packet<any> | IPacketOptions<any> | string) {
+  public async send(packet: Packet<any> | IPacketOptions<any> | string): Promise<Packet<any> | null> {
     if (typeof packet === 'string') {
       packet = Packet.raw(packet);
     } else if (!(packet instanceof Packet)) {
